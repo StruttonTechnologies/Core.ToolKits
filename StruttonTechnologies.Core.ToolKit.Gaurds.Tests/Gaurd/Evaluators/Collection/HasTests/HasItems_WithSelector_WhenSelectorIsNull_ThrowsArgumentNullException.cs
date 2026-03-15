@@ -1,6 +1,4 @@
-﻿using StruttonTechnologies.Core.ToolKit.Guard;
-
-namespace StruttonTechnologies.Core.ToolKit.Gaurds.Tests.Gaurd.Evaluators.Collection;
+﻿namespace StruttonTechnologies.Core.ToolKit.Gaurds.Tests.Gaurd.Evaluators.Collection;
 
 public class HasItems_WithSelector_WhenSelectorIsNull_ThrowsArgumentNullException
 {
