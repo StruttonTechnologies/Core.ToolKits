@@ -1,0 +1,16 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Build.targets" />
+    <File Path="Directory.Packages.props" />
+    <File Path="Notes.txt" />
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/Source/">
+    <Project Path="Gaurds/Guards.csproj" />
+  </Folder>
+  <Folder Name="/Tests/">
+    <Project Path="StruttonTechnologies.Core.ToolKit.Gaurds.Tests/StruttonTechnologies.Core.ToolKit.Gaurds.Tests.csproj" Id="405180d5-26db-46d1-9768-4989f29798cf" />
+  </Folder>
+</Solution>

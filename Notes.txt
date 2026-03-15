@@ -1,0 +1,460 @@
+STRUTTON TECHNOLOGIES – GUARD TOOLKIT DESIGN NOTES
+==================================================
+
+Core Fluent Model
+-----------------
+Guard → Evaluator → Behavior
+
+Example:
+Guard.IsNull(user).ThrowArgumentNull();
+Guard.IsTrue(order.IsClosed).ThrowInvalidOperation();
+return await Guard.IsNull(user).ReturnEmptyArray(u => _userManager.GetLoginsAsync(u));
+
+Design Principles
+-----------------
+• Evaluators determine whether a condition matches.
+• Evaluators return GuardCondition<T>.
+• Behaviors act based on whether the evaluator matched.
+• Evaluators should remain small, predictable, and easy to remember.
+• Behaviors should remain broadly available rather than restricted per evaluator.
+• Folder structure is for source organization only — all files share the same namespace.
+
+Namespace
+---------
+StruttonTechnologies.Core.Toolkit.Guards
+
+
+=================================================================
+EVALUATOR STRUCTURE
+=================================================================
+
+Evaluators
+----------
+General
+String
+Collection
+Equality
+Numeric
+Type
+
+
+=================================================================
+GENERAL EVALUATORS
+=================================================================
+
+IsNull.cs
+Purpose
+    Checks if a reference value is null.
+
+Overloads
+    IsNull<T>(T? value) where T : class
+    IsNull<T, TProperty>(T? value, Func<T, TProperty?> selector) where T : class
+
+Behavior notes
+    All behaviors available
+    Most common guard in the library
+
+
+IsNotNull.cs
+Purpose
+    Positive existence check.
+
+Overloads
+    IsNotNull<T>(T? value) where T : class
+    IsNotNull<T, TProperty>(T? value, Func<T, TProperty?> selector) where T : class
+
+Behavior notes
+    All behaviors available
+
+
+IsTrue.cs
+Purpose
+    Evaluates whether a boolean condition is true.
+
+Overloads
+    IsTrue(bool value)
+    IsTrue<T>(T value, Func<T, bool> selector) where T : class
+
+Behavior notes
+    All behaviors available
+
+
+IsFalse.cs
+Purpose
+    Evaluates whether a boolean condition is false.
+
+Overloads
+    IsFalse(bool value)
+    IsFalse<T>(T value, Func<T, bool> selector) where T : class
+
+Behavior notes
+    All behaviors available
+
+
+IsDefault.cs
+Purpose
+    Checks whether a value equals default(T).
+
+Overloads
+    IsDefault<T>(T value)
+    IsDefault<TObject, TValue>(TObject value, Func<TObject, TValue> selector) where TObject : class
+
+Behavior notes
+    All behaviors available
+
+
+IsNotDefault.cs
+Purpose
+    Checks whether a value does not equal default(T).
+
+Overloads
+    IsNotDefault<T>(T value)
+    IsNotDefault<TObject, TValue>(TObject value, Func<TObject, TValue> selector) where TObject : class
+
+Behavior notes
+    All behaviors available
+
+
+
+=================================================================
+STRING EVALUATORS
+=================================================================
+
+IsEmpty.cs
+Purpose
+    Checks whether a string is exactly "".
+
+Overloads
+    IsEmpty(string? value)
+    IsEmpty<T>(T? value, Func<T, string?> selector) where T : class
+
+Semantics
+    null -> false
+    "" -> true
+
+
+IsWhiteSpace.cs
+Purpose
+    Checks whether a string contains only whitespace.
+
+Overloads
+    IsWhiteSpace(string? value)
+    IsWhiteSpace<T>(T? value, Func<T, string?> selector) where T : class
+
+Semantics
+    null -> false
+    "" -> false
+    "   " -> true
+
+
+IsNullOrEmpty.cs
+Purpose
+    Checks whether a string is null or empty.
+
+Overloads
+    IsNullOrEmpty(string? value)
+    IsNullOrEmpty<T>(T? value, Func<T, string?> selector) where T : class
+
+
+IsNullOrWhiteSpace.cs
+Purpose
+    Checks whether a string is null, empty, or whitespace.
+
+Overloads
+    IsNullOrWhiteSpace(string? value)
+    IsNullOrWhiteSpace<T>(T? value, Func<T, string?> selector) where T : class
+
+
+HasValue.cs
+Purpose
+    Checks whether a string contains meaningful characters.
+
+Implementation
+    !string.IsNullOrWhiteSpace(value)
+
+Overloads
+    HasValue(string? value)
+    HasValue<T>(T? value, Func<T, string?> selector) where T : class
+
+
+
+=================================================================
+COLLECTION EVALUATORS
+=================================================================
+
+IsEmpty.cs
+Purpose
+    Checks whether a collection contains no items.
+
+Overloads
+    IsEmpty<T>(IEnumerable<T>? value)
+    IsEmpty<TObject, TItem>(TObject? value, Func<TObject, IEnumerable<TItem>?> selector) where TObject : class
+
+Semantics (recommended)
+    null collection -> true
+    empty collection -> true
+
+
+HasItems.cs
+Purpose
+    Checks whether a collection contains at least one item.
+
+Overloads
+    HasItems<T>(IEnumerable<T>? value)
+    HasItems<TObject, TItem>(TObject? value, Func<TObject, IEnumerable<TItem>?> selector) where TObject : class
+
+
+
+=================================================================
+EQUALITY EVALUATORS
+=================================================================
+
+IsEqual.cs
+Purpose
+    Checks whether two values are equal.
+
+Overloads
+    IsEqual<T>(T value, T comparison)
+    IsEqual<TObject, TValue>(TObject value, Func<TObject, TValue> selector, TValue comparison) where TObject : class
+
+Implementation
+    EqualityComparer<T>.Default.Equals(value, comparison)
+
+
+IsNotEqual.cs
+Purpose
+    Checks whether two values are not equal.
+
+Overloads
+    IsNotEqual<T>(T value, T comparison)
+    IsNotEqual<TObject, TValue>(TObject value, Func<TObject, TValue> selector, TValue comparison) where TObject : class
+
+
+
+=================================================================
+NUMERIC EVALUATORS
+=================================================================
+
+Numeric evaluators should use generic math where possible.
+
+Recommended constraint
+    where T : INumber<T>
+
+Files
+-----
+
+IsZero.cs
+IsNotZero.cs
+IsPositive.cs
+IsNegative.cs
+IsGreaterThan.cs
+IsGreaterThanOrEqual.cs
+IsLessThan.cs
+IsLessThanOrEqual.cs
+
+
+Example overloads
+
+IsZero<T>(T value) where T : INumber<T>
+IsZero<TObject, TValue>(TObject value, Func<TObject, TValue> selector)
+    where TObject : class
+    where TValue : INumber<TValue>
+
+
+Numeric semantics
+
+Positive
+    value > 0
+
+Negative
+    value < 0
+
+Zero
+    value == 0
+
+
+
+=================================================================
+TYPE EVALUATORS
+=================================================================
+
+IsType.cs
+Purpose
+    Checks whether a value is of a specified type.
+
+Overloads
+    IsType<TExpected>(object? value)
+    IsType<TObject, TExpected>(TObject? value, Func<TObject, object?> selector) where TObject : class
+
+Implementation
+    value is TExpected
+
+
+IsNotType.cs
+Purpose
+    Checks whether a value is NOT of a specified type.
+
+Overloads
+    IsNotType<TExpected>(object? value)
+    IsNotType<TObject, TExpected>(TObject? value, Func<TObject, object?> selector) where TObject : class
+
+
+
+=================================================================
+BEHAVIOR DESIGN
+=================================================================
+
+Behaviors should generally be available on all GuardCondition<T> instances.
+
+
+Core Throw Behaviors
+--------------------
+
+Throw(Exception exception)
+
+Throw(Func<Exception> exceptionFactory)
+
+ThrowArgumentNull(string? paramName = null)
+
+ThrowArgument(string message, string? paramName = null)
+
+ThrowInvalidOperation(string? message = null)
+
+Optional
+    ThrowObjectDisposed(string? objectName = null)
+
+
+
+Return Behaviors
+----------------
+
+Return<TResult>(TResult matchedReturn, Func<T, TResult> notMatchedFactory)
+
+Return<TResult>(Func<TResult> matchedFactory, Func<T, TResult> notMatchedFactory)
+
+ReturnDefault<TResult>(Func<T, TResult> notMatchedFactory)
+
+ReturnNull<TResult>(Func<T, TResult> notMatchedFactory) where TResult : class
+
+
+
+Collection Return Behaviors
+---------------------------
+
+ReturnEmptyArray<TResult>(...)
+
+ReturnEmptyList<TResult>(...)
+
+ReturnEmptyEnumerable<TResult>(...)
+
+
+
+Side Effect Behaviors
+---------------------
+
+Do(Action<T> action)
+
+Do(Action action)
+
+DoAsync(Func<T, Task> action)
+
+DoAsync(Func<Task> action)
+
+
+
+=================================================================
+BEHAVIOR AVAILABILITY MODEL
+=================================================================
+
+Available everywhere
+--------------------
+
+Throw
+ThrowArgument
+ThrowInvalidOperation
+Return
+ReturnDefault
+Do
+DoAsync
+
+
+Primarily intended for null guards
+----------------------------------
+
+ThrowArgumentNull
+
+Used mostly with:
+    IsNull
+    IsNullOrEmpty
+    IsNullOrWhiteSpace
+
+
+Collection helpers
+------------------
+
+ReturnEmptyArray
+ReturnEmptyList
+ReturnEmptyEnumerable
+
+Primarily useful with
+    IsNull
+    IsEmpty
+    HasItems
+    IsTrue / IsFalse flows
+
+
+
+=================================================================
+FINAL EVALUATOR SET
+=================================================================
+
+General
+-------
+IsNull
+IsNotNull
+IsTrue
+IsFalse
+IsDefault
+IsNotDefault
+
+
+String
+------
+IsEmpty
+IsWhiteSpace
+IsNullOrEmpty
+IsNullOrWhiteSpace
+HasValue
+
+
+Collection
+----------
+IsEmpty
+HasItems
+
+
+Equality
+--------
+IsEqual
+IsNotEqual
+
+
+Numeric
+-------
+IsZero
+IsNotZero
+IsPositive
+IsNegative
+IsGreaterThan
+IsGreaterThanOrEqual
+IsLessThan
+IsLessThanOrEqual
+
+
+Type
+----
+IsType
+IsNotType
+
+
+
