@@ -1,4 +1,4 @@
-﻿using StruttonTechnologies.Core.ToolKit.Guard;
+﻿using StruttonTechnologies.Core.ToolKit.Guards;
 
 namespace StruttonTechnologies.Core.ToolKit.Gaurds.Tests.Gaurd.Evaluators.Collection;
 

@@ -1,17 +1,18 @@
-﻿using StruttonTechnologies.Core.ToolKit.Guard;
+﻿using StruttonTechnologies.Core.ToolKit.Guards;
 
-namespace StruttonTechnologies.Core.ToolKit.Gaurds.Tests.Gaurd.Evaluators.Collection;
-
-public class HasItems_WithSingleItem_ReturnsMatched
+namespace StruttonTechnologies.Core.ToolKit.Gaurds.Tests.Gaurd.Evaluators.Collection.HasTests
 {
-    [Fact]
-    public void Test()
+    public class HasItems_WithSingleItem_ReturnsMatched
     {
-        int[] value = new[] { 1 };
+        [Fact]
+        public void Test()
+        {
+            int[] value = new[] { 1 };
 
-        GuardCondition<IEnumerable<int>> result = Guard.HasItems(value);
+            GuardCondition<IEnumerable<int>> result = Guard.HasItems(value);
 
-        bool actual = result.Return(true, _ => false);
-        Assert.True(actual);
+            bool actual = result.Return(true, _ => false);
+            Assert.True(actual);
+        }
     }
 }
