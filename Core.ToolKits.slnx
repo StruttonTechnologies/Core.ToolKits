@@ -10,6 +10,10 @@
   <Folder Name="/Source/">
     <Project Path="Gaurds/Guards.csproj" />
   </Folder>
+  <Folder Name="/Source/Testing/">
+    <Project Path="StruttonTechnologies.Core.Toolkit.Testing.Gaurd/StruttonTechnologies.Core.Toolkit.Testing.Gaurd.csproj" Id="1b258d94-4d94-40df-ac3c-255f5ad70bc3" />
+    <Project Path="StruttonTechnologies.Core.Toolkit.Testing/StruttonTechnologies.Core.Toolkit.Testing.csproj" Id="d364fb88-ac0b-450d-a9f6-382556fe283b" />
+  </Folder>
   <Folder Name="/Tests/">
     <Project Path="StruttonTechnologies.Core.ToolKit.Gaurds.Tests/StruttonTechnologies.Core.ToolKit.Gaurds.Tests.csproj" Id="405180d5-26db-46d1-9768-4989f29798cf" />
   </Folder>
