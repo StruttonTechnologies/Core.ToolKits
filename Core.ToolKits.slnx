@@ -8,10 +8,10 @@
     <File Path="README.md" />
   </Folder>
   <Folder Name="/Source/">
-    <Project Path="Gaurds/Guards.csproj" />
+    <Project Path="StruttonTechnologies.Core.ToolKit.Guards/StruttonTechnologies.Core.ToolKit.Guards.csproj" />
   </Folder>
   <Folder Name="/Source/Testing/">
-    <Project Path="StruttonTechnologies.Core.Toolkit.Testing.Gaurd/StruttonTechnologies.Core.Toolkit.Testing.Gaurd.csproj" Id="1b258d94-4d94-40df-ac3c-255f5ad70bc3" />
+    <Project Path="StruttonTechnologies.Core.ToolKit.Testing.Guard/StruttonTechnologies.Core.ToolKit.Testing.Guard.csproj" Id="f1c771a2-46e6-4526-ab56-54f9b3df795f" />
     <Project Path="StruttonTechnologies.Core.Toolkit.Testing/StruttonTechnologies.Core.Toolkit.Testing.csproj" Id="d364fb88-ac0b-450d-a9f6-382556fe283b" />
   </Folder>
   <Folder Name="/Tests/">

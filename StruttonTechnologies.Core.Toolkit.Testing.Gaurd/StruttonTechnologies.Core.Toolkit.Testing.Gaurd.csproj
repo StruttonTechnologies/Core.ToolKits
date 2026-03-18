@@ -7,7 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.Gaurds.Tests\StruttonTechnologies.Core.ToolKit.Gaurds.Tests.csproj" />
+    <PackageReference Include="xunit.v3.assert" />
+    <PackageReference Include="xunit.v3.extensibility.core" />
   </ItemGroup>
 
 </Project>

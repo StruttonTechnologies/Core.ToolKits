@@ -1,52 +1,67 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
-namespace StruttonTechnologies.Core.ToolKit.Testing.Data
+﻿namespace StruttonTechnologies.Core.Toolkit.Testing.Data
 {
     /// <summary>
-    /// Provides common enumerable-based theory data sets.
+    /// Provides reusable integer-based theory data sets for unit tests.
     /// </summary>
-    [ExcludeFromCodeCoverage]
-    public static class EnumerableTheoryData
+    public static class IntegerTheoryData
     {
         /// <summary>
-        /// Gets empty enumerable collections of integers.
+        /// Gets a set of empty integer collections.
         /// </summary>
-        public static IEnumerable<object[]> EmptyIntegers =>
-        [
-            TheoryDataBuilder.CreateRow<IEnumerable<int>>(Enumerable.Empty<int>()),
-            TheoryDataBuilder.CreateRow<IEnumerable<int>>(Array.Empty<int>()),
-            TheoryDataBuilder.CreateRow<IEnumerable<int>>([]),
-        ];
+        public static TheoryData<IEnumerable<int>> EmptyCollections =>
+            new()
+            {
+                Enumerable.Empty<int>(),
+                Array.Empty<int>(),
+                new List<int>(),
+            };
 
         /// <summary>
-        /// Gets populated enumerable collections of integers.
+        /// Gets a set of populated integer collections.
         /// </summary>
-        public static IEnumerable<object[]> PopulatedIntegers =>
-        [
-            TheoryDataBuilder.CreateRow<IEnumerable<int>>(new[] { 1 }),
-            TheoryDataBuilder.CreateRow<IEnumerable<int>>(new[] { 1, 2 }),
-            TheoryDataBuilder.CreateRow<IEnumerable<int>>([1, 2, 3]),
-            TheoryDataBuilder.CreateRow<IEnumerable<int>>(Enumerable.Range(1, 5)),
-        ];
+        public static TheoryData<IEnumerable<int>> PopulatedCollections =>
+            new()
+            {
+                new[] { 1 },
+                new[] { 1, 2, 3 },
+                new List<int> { 1, 2, 3, 4 },
+                Enumerable.Range(1, 5),
+            };
 
         /// <summary>
-        /// Gets empty enumerable collections of strings.
+        /// Gets a set of integer values useful for numeric boundary testing.
         /// </summary>
-        public static IEnumerable<object[]> EmptyStrings =>
-        [
-            TheoryDataBuilder.CreateRow<IEnumerable<string>>(Enumerable.Empty<string>()),
-            TheoryDataBuilder.CreateRow<IEnumerable<string>>(Array.Empty<string>()),
-            TheoryDataBuilder.CreateRow<IEnumerable<string>>([]),
-        ];
+        public static TheoryData<int> BoundaryValues =>
+            [
+                int.MinValue,
+                -1,
+                0,
+                1,
+                int.MaxValue,
+            ];
 
         /// <summary>
-        /// Gets populated enumerable collections of strings.
+        /// Gets positive integer values.
         /// </summary>
-        public static IEnumerable<object[]> PopulatedStrings =>
-        [
-            TheoryDataBuilder.CreateRow<IEnumerable<string>>(new[] { "one" }),
-            TheoryDataBuilder.CreateRow<IEnumerable<string>>(new[] { "one", "two" }),
-            TheoryDataBuilder.CreateRow<IEnumerable<string>>(["one", "two", "three"]),
-        ];
+        public static TheoryData<int> PositiveValues =>
+            [
+                1,
+                2,
+                10,
+                100,
+                int.MaxValue,
+            ];
+
+        /// <summary>
+        /// Gets negative integer values.
+        /// </summary>
+        public static TheoryData<int> NegativeValues =>
+            [
+                -1,
+                -2,
+                -10,
+                -100,
+                int.MinValue,
+            ];
     }
 }

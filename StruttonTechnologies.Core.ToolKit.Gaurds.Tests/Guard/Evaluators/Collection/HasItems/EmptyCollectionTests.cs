@@ -1,4 +1,7 @@
-﻿namespace StruttonTechnologies.Core.ToolKit.Gaurds.Tests.Guard.Evaluators.Collection.HasItems
+﻿using StruttonTechnologies.Core.ToolKit.Guards;
+using StruttonTechnologies.Core.ToolKit.Guards.Tests.Guard.Evaluators.Collection.HasItems;
+
+namespace StruttonTechnologies.Core.ToolKit.Gaurds.Tests.Guard.Evaluators.Collection.HasItems
 {
     /// <summary>
     /// Contains empty collection test scenarios for <c>Guard.HasItems</c>.

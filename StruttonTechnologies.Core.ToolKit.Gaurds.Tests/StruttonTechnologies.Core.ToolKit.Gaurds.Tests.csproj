@@ -9,16 +9,11 @@
     <PackageReference Include="xunit.runner.visualstudio" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Gaurds\Guards.csproj" />
+    <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.Guards\StruttonTechnologies.Core.ToolKit.Guards.csproj" />
     <ProjectReference Include="..\StruttonTechnologies.Core.Toolkit.Testing\StruttonTechnologies.Core.Toolkit.Testing.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Using Include="Xunit" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Guard\Evaluators\Collection\HasTests\" />
     <Folder Include="Guard\Evaluators\Equality\" />
     <Folder Include="Guard\Evaluators\Type\" />
     <Folder Include="Guard\Evaluators\String\" />
