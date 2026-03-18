@@ -8,13 +8,13 @@
     <File Path="README.md" />
   </Folder>
   <Folder Name="/Source/">
-    <Project Path="StruttonTechnologies.Core.ToolKit.Guards/StruttonTechnologies.Core.ToolKit.Guards.csproj" />
+    <Project Path="StruttonTechnologies.Core.ToolKit.GuardKit/StruttonTechnologies.Core.ToolKit.Guardkit.csproj" />
   </Folder>
   <Folder Name="/Source/Testing/">
-    <Project Path="StruttonTechnologies.Core.ToolKit.Testing.Guard/StruttonTechnologies.Core.ToolKit.Testing.Guard.csproj" Id="f1c771a2-46e6-4526-ab56-54f9b3df795f" />
-    <Project Path="StruttonTechnologies.Core.Toolkit.Testing/StruttonTechnologies.Core.Toolkit.Testing.csproj" Id="d364fb88-ac0b-450d-a9f6-382556fe283b" />
+    <Project Path="StruttonTechnologies.Core.ToolKit.TestingKit.Guard/StruttonTechnologies.Core.ToolKit.TestingKit.Guard.csproj" Id="f1c771a2-46e6-4526-ab56-54f9b3df795f" />
+    <Project Path="StruttonTechnologies.Core.Toolkit.TestingKit/StruttonTechnologies.Core.Toolkit.TestingKit.csproj" Id="d364fb88-ac0b-450d-a9f6-382556fe283b" />
   </Folder>
   <Folder Name="/Tests/">
-    <Project Path="StruttonTechnologies.Core.ToolKit.Gaurds.Tests/StruttonTechnologies.Core.ToolKit.Gaurds.Tests.csproj" Id="405180d5-26db-46d1-9768-4989f29798cf" />
+    <Project Path="StruttonTechnologies.Core.ToolKit.GuardKit.Tests/StruttonTechnologies.Core.ToolKit.GuardKit.Tests.csproj" Id="405180d5-26db-46d1-9768-4989f29798cf" />
   </Folder>
 </Solution>

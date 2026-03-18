@@ -1,4 +1,4 @@
-STRUTTON TECHNOLOGIES – GUARD TOOLKIT DESIGN NOTES
+﻿STRUTTON TECHNOLOGIES – GUARD TOOLKIT DESIGN NOTES
 ==================================================
 
 Core Fluent Model
@@ -21,7 +21,7 @@ Design Principles
 
 Namespace
 ---------
-StruttonTechnologies.Core.Toolkit.Guards
+StruttonTechnologies.Core.ToolKit.GuardKit
 
 
 =================================================================

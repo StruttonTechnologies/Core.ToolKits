@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <Compile Remove="Guard\Evaluators\Collection\HasItems\SelectorBehaviorTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="xunit.v3" />
+    <PackageReference Include="xunit.runner.visualstudio" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.GuardKit\StruttonTechnologies.Core.ToolKit.Guardkit.csproj" />
+    <ProjectReference Include="..\StruttonTechnologies.Core.Toolkit.Testing\StruttonTechnologies.Core.Toolkit.Testing.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Guard\Evaluators\Equality\" />
+    <Folder Include="Guard\Evaluators\Type\" />
+    <Folder Include="Guard\Evaluators\String\" />
+    <Folder Include="Guard\Evaluators\Numeric\" />
+    <Folder Include="Guard\Evaluators\General\" />
+    <Folder Include="Guard\GuardCondition\Behaviors\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Guard\Evaluators\Collection\HasItems\SelectorBehaviorTests.cs" />
+  </ItemGroup>
+
+</Project>
