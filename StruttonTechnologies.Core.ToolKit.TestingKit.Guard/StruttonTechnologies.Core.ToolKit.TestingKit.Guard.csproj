@@ -11,7 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.GuardKit\StruttonTechnologies.Core.ToolKit.Guardkit.csproj" />
-    <ProjectReference Include="..\StruttonTechnologies.Core.Toolkit.Testing\StruttonTechnologies.Core.Toolkit.Testing.csproj" />
+    <ProjectReference Include="..\StruttonTechnologies.Core.Toolkit.TestingKit\StruttonTechnologies.Core.Toolkit.TestingKit.csproj" />
   </ItemGroup>
 
 </Project>

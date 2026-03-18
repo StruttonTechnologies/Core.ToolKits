@@ -1,7 +1,7 @@
 ﻿namespace StruttonTechnologies.Core.ToolKit.GuardKit.Tests.Guard.Evaluators.Collection.HasItems
 {
     /// <summary>
-    /// Contains selector-specific behavior tests for <c>Guard.HasItems</c>.
+    /// Contains selector-specific behavior tests for <c>GuardTest.HasItems</c>.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public class SelectorBehaviorTests
@@ -14,7 +14,7 @@
         public void HasItems_WithSelector_WhenNestedPropertyContainsItems_ReturnsMatched(ParentTestObject<EnumerableTestObject<int>> value)
         {
             GuardCondition<ParentTestObject<EnumerableTestObject<int>>> result =
-                Guard.HasItems(value, x => x.Child!.Items);
+                GuardTest.HasItems(value, x => x.Child!.Items);
 
             bool matched = result.Return(true, _ => false);
 
@@ -33,7 +33,7 @@
             };
 
             GuardCondition<EnumerableTestObject<string>> result =
-                Guard.HasItems(value, x => x.Items!.Where(item => item.StartsWith('z')));
+                GuardTest.HasItems(value, x => x.Items!.Where(item => item.StartsWith('z')));
 
             bool matched = result.Return(true, _ => false);
 
@@ -52,7 +52,7 @@
             };
 
             GuardCondition<EnumerableTestObject<string>> result =
-                Guard.HasItems(value, x => x.Items!.Where(item => item.StartsWith('a')));
+                GuardTest.HasItems(value, x => x.Items!.Where(item => item.StartsWith('a')));
 
             bool matched = result.Return(true, _ => false);
 

@@ -10,7 +10,7 @@
         {
             int captured = 0;
 
-            Guard.IsTrue(true).Do(value => captured = value ? 1 : -1);
+            GuardTest.IsTrue(true).Do(value => captured = value ? 1 : -1);
 
             Assert.Equal(1, captured);
         }
@@ -20,7 +20,7 @@
         {
             bool executed = false;
 
-            Guard.IsTrue(false).Do(() => executed = true);
+            GuardTest.IsTrue(false).Do(() => executed = true);
 
             Assert.False(executed);
         }
@@ -30,7 +30,7 @@
         {
             int captured = 0;
 
-            await Guard.IsTrue(true).DoAsync(value =>
+            await GuardTest.IsTrue(true).DoAsync(value =>
             {
                 captured = value ? 1 : -1;
                 return Task.CompletedTask;
@@ -44,7 +44,7 @@
         {
             bool executed = false;
 
-            await Guard.IsTrue(false).DoAsync(() =>
+            await GuardTest.IsTrue(false).DoAsync(() =>
             {
                 executed = true;
                 return Task.CompletedTask;
@@ -56,7 +56,7 @@
         [Fact]
         public void Return_WithMatchedConstant_ReturnsMatchedValue()
         {
-            string result = Guard.IsTrue(true).Return("matched", _ => "not-matched");
+            string result = GuardTest.IsTrue(true).Return("matched", _ => "not-matched");
 
             Assert.Equal("matched", result);
         }
@@ -64,7 +64,7 @@
         [Fact]
         public void Return_WithMatchedFactory_ReturnsFactoryValue()
         {
-            string result = Guard.IsTrue(true).Return(() => "matched", _ => "not-matched");
+            string result = GuardTest.IsTrue(true).Return(() => "matched", _ => "not-matched");
 
             Assert.Equal("matched", result);
         }
@@ -72,7 +72,7 @@
         [Fact]
         public async Task ReturnAsync_WithMatchedConstant_ReturnsMatchedValue()
         {
-            string result = await Guard.IsTrue(true).Return("matched", _ => Task.FromResult("not-matched"));
+            string result = await GuardTest.IsTrue(true).Return("matched", _ => Task.FromResult("not-matched"));
 
             Assert.Equal("matched", result);
         }
@@ -80,7 +80,7 @@
         [Fact]
         public async Task ReturnAsync_WithMatchedFactory_ReturnsFactoryValue()
         {
-            string result = await Guard.IsTrue(true).Return(() => Task.FromResult("matched"), _ => Task.FromResult("not-matched"));
+            string result = await GuardTest.IsTrue(true).Return(() => Task.FromResult("matched"), _ => Task.FromResult("not-matched"));
 
             Assert.Equal("matched", result);
         }
@@ -88,7 +88,7 @@
         [Fact]
         public void ReturnDefault_WhenMatched_ReturnsDefault()
         {
-            string? result = Guard.IsTrue(true).ReturnDefault<string>(_ => "fallback");
+            string? result = GuardTest.IsTrue(true).ReturnDefault<string>(_ => "fallback");
 
             Assert.Null(result);
         }
@@ -96,7 +96,7 @@
         [Fact]
         public async Task ReturnDefaultAsync_WhenNotMatched_ReturnsFactoryValue()
         {
-            string? result = await Guard.IsTrue(false).ReturnDefault(_ => Task.FromResult("fallback"));
+            string? result = await GuardTest.IsTrue(false).ReturnDefault(_ => Task.FromResult("fallback"));
 
             Assert.Equal("fallback", result);
         }
@@ -104,7 +104,7 @@
         [Fact]
         public void ReturnNull_WhenMatched_ReturnsNull()
         {
-            string? result = Guard.IsTrue(true).ReturnNull(_ => "fallback");
+            string? result = GuardTest.IsTrue(true).ReturnNull(_ => "fallback");
 
             Assert.Null(result);
         }
@@ -112,7 +112,7 @@
         [Fact]
         public async Task ReturnNullAsync_WhenNotMatched_ReturnsFactoryValue()
         {
-            string? result = await Guard.IsTrue(false).ReturnNull(_ => Task.FromResult("fallback"));
+            string? result = await GuardTest.IsTrue(false).ReturnNull(_ => Task.FromResult("fallback"));
 
             Assert.Equal("fallback", result);
         }
@@ -120,7 +120,7 @@
         [Fact]
         public async Task ReturnEmptyArray_WhenMatched_ReturnsEmptyArray()
         {
-            int[] result = await Guard.IsTrue(true).ReturnEmptyArray(_ => Task.FromResult(new[] { 1, 2, 3 }));
+            int[] result = await GuardTest.IsTrue(true).ReturnEmptyArray(_ => Task.FromResult(new[] { 1, 2, 3 }));
 
             Assert.Empty(result);
         }
@@ -128,7 +128,7 @@
         [Fact]
         public async Task ReturnEmptyEnumerable_WhenMatched_ReturnsEmptyEnumerable()
         {
-            IEnumerable<int> result = await Guard.IsTrue(true).ReturnEmptyEnumerable(_ => Task.FromResult<IEnumerable<int>>(new[] { 1, 2, 3 }));
+            IEnumerable<int> result = await GuardTest.IsTrue(true).ReturnEmptyEnumerable(_ => Task.FromResult<IEnumerable<int>>(new[] { 1, 2, 3 }));
 
             Assert.Empty(result);
         }
@@ -136,7 +136,7 @@
         [Fact]
         public async Task ReturnEmptyList_WhenMatched_ReturnsEmptyList()
         {
-            List<int> result = await Guard.IsTrue(true).ReturnEmptyList(_ => Task.FromResult(new List<int> { 1, 2, 3 }));
+            List<int> result = await GuardTest.IsTrue(true).ReturnEmptyList(_ => Task.FromResult(new List<int> { 1, 2, 3 }));
 
             Assert.Empty(result);
         }

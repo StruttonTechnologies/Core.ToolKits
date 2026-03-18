@@ -1,7 +1,7 @@
 ﻿namespace StruttonTechnologies.Core.ToolKit.GuardKit.Tests.Guard.Evaluators.Collection.HasItems
 {
     /// <summary>
-    /// Provides test data specific to <c>Guard.HasItems</c>.
+    /// Provides test data specific to <c>GuardTest.HasItems</c>.
     /// </summary>
     [ExcludeFromCodeCoverage]
     internal static class HasItemsTestContext

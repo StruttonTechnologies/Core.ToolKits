@@ -1,19 +1,19 @@
 ﻿namespace StruttonTechnologies.Core.ToolKit.GuardKit.Tests.Guard.Evaluators.Collection.HasItems
 {
     /// <summary>
-    /// Contains null-input test scenarios for <c>Guard.HasItems</c>.
+    /// Contains null-input test scenarios for <c>GuardTest.HasItems</c>.
     /// </summary>
     public class NullInputTests
     {
         /// <summary>
-        /// Verifies that <c>Guard.HasItems</c> does not match when the collection is <see langword="null"/>.
+        /// Verifies that <c>GuardTest.HasItems</c> does not match when the collection is <see langword="null"/>.
         /// </summary>
         [Fact]
         public void HasItems_WhenCollectionIsNull_ReturnsNotMatched()
         {
             IEnumerable<int>? collection = null;
 
-            GuardCondition<IEnumerable<int>> result = Guard.HasItems(collection);
+            GuardCondition<IEnumerable<int>> result = GuardTest.HasItems(collection);
 
             bool matched = result.Return(true, _ => false);
 
@@ -28,7 +28,7 @@
         {
             EnumerableTestObject<string>? value = null;
 
-            GuardCondition<EnumerableTestObject<string>> result = Guard.HasItems(value, x => x.Items);
+            GuardCondition<EnumerableTestObject<string>> result = GuardTest.HasItems(value, x => x.Items);
 
             bool matched = result.Return(true, _ => false);
 
@@ -46,7 +46,7 @@
                 Items = null,
             };
 
-            GuardCondition<EnumerableTestObject<string>> result = Guard.HasItems(value, x => x.Items);
+            GuardCondition<EnumerableTestObject<string>> result = GuardTest.HasItems(value, x => x.Items);
 
             bool matched = result.Return(true, _ => false);
 
@@ -66,7 +66,7 @@
 
             Func<EnumerableTestObject<string>, IEnumerable<string>?> selector = null!;
 
-            ArgumentNullException exception = Assert.Throws<ArgumentNullException>(() => Guard.HasItems(value, selector));
+            ArgumentNullException exception = Assert.Throws<ArgumentNullException>(() => GuardTest.HasItems(value, selector));
 
             Assert.Equal("selector", exception.ParamName);
         }

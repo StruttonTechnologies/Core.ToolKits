@@ -1,7 +1,7 @@
 ﻿namespace StruttonTechnologies.Core.ToolKit.GuardKit.Tests.Guard.Evaluators.Collection
 {
     /// <summary>
-    /// Contains test scenarios for <c>Guard.IsEmpty</c>.
+    /// Contains test scenarios for <c>GuardTest.IsEmpty</c>.
     /// </summary>
     public class IsEmptyTests
     {
@@ -10,7 +10,7 @@
         {
             IEnumerable<int>? value = null;
 
-            bool matched = Guard.IsEmpty(value).Return(true, _ => false);
+            bool matched = GuardTest.IsEmpty(value).Return(true, _ => false);
 
             Assert.True(matched);
         }
@@ -19,7 +19,7 @@
         [MemberData(nameof(EnumerableTheoryData.EmptyIntegers), MemberType = typeof(EnumerableTheoryData))]
         public void IsEmpty_WhenCollectionIsEmpty_ReturnsMatched(IEnumerable<int> value)
         {
-            bool matched = Guard.IsEmpty(value).Return(true, _ => false);
+            bool matched = GuardTest.IsEmpty(value).Return(true, _ => false);
 
             Assert.True(matched);
         }
@@ -28,7 +28,7 @@
         [MemberData(nameof(EnumerableTheoryData.PopulatedIntegers), MemberType = typeof(EnumerableTheoryData))]
         public void IsEmpty_WhenCollectionHasItems_ReturnsNotMatched(IEnumerable<int> value)
         {
-            bool matched = Guard.IsEmpty(value).Return(true, _ => false);
+            bool matched = GuardTest.IsEmpty(value).Return(true, _ => false);
 
             Assert.False(matched);
         }
@@ -38,7 +38,7 @@
         {
             EnumerableTestObject<int>? value = null;
 
-            bool matched = Guard.IsEmpty(value, x => x.Items).Return(true, _ => false);
+            bool matched = GuardTest.IsEmpty(value, x => x.Items).Return(true, _ => false);
 
             Assert.True(matched);
         }
@@ -46,9 +46,9 @@
         [Fact]
         public void IsEmpty_WithSelector_WhenSelectedCollectionIsNull_ReturnsMatched()
         {
-            var value = new EnumerableTestObject<int> { Items = null };
+            EnumerableTestObject<int> value = new EnumerableTestObject<int> { Items = null };
 
-            bool matched = Guard.IsEmpty(value, x => x.Items).Return(true, _ => false);
+            bool matched = GuardTest.IsEmpty(value, x => x.Items).Return(true, _ => false);
 
             Assert.True(matched);
         }
@@ -57,9 +57,9 @@
         [MemberData(nameof(EnumerableTheoryData.EmptyIntegers), MemberType = typeof(EnumerableTheoryData))]
         public void IsEmpty_WithSelector_WhenSelectedCollectionIsEmpty_ReturnsMatched(IEnumerable<int> items)
         {
-            var value = new EnumerableTestObject<int> { Items = items };
+            EnumerableTestObject<int> value = new EnumerableTestObject<int> { Items = items };
 
-            bool matched = Guard.IsEmpty(value, x => x.Items).Return(true, _ => false);
+            bool matched = GuardTest.IsEmpty(value, x => x.Items).Return(true, _ => false);
 
             Assert.True(matched);
         }
@@ -68,9 +68,9 @@
         [MemberData(nameof(EnumerableTheoryData.PopulatedIntegers), MemberType = typeof(EnumerableTheoryData))]
         public void IsEmpty_WithSelector_WhenSelectedCollectionHasItems_ReturnsNotMatched(IEnumerable<int> items)
         {
-            var value = new EnumerableTestObject<int> { Items = items };
+            EnumerableTestObject<int> value = new EnumerableTestObject<int> { Items = items };
 
-            bool matched = Guard.IsEmpty(value, x => x.Items).Return(true, _ => false);
+            bool matched = GuardTest.IsEmpty(value, x => x.Items).Return(true, _ => false);
 
             Assert.False(matched);
         }
@@ -78,10 +78,10 @@
         [Fact]
         public void IsEmpty_WithSelector_WhenSelectorIsNull_ThrowsArgumentNullException()
         {
-            var value = new EnumerableTestObject<int> { Items = [1] };
+            EnumerableTestObject<int> value = new EnumerableTestObject<int> { Items = [1] };
             Func<EnumerableTestObject<int>, IEnumerable<int>?> selector = null!;
 
-            ArgumentNullException exception = Assert.Throws<ArgumentNullException>(() => Guard.IsEmpty(value, selector));
+            ArgumentNullException exception = Assert.Throws<ArgumentNullException>(() => GuardTest.IsEmpty(value, selector));
 
             Assert.Equal("selector", exception.ParamName);
         }
