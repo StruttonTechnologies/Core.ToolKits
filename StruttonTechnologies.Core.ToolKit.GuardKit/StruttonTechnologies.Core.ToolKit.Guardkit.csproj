@@ -1,9 +1,33 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <ItemGroup>
-    <PackageReference Include="coverlet.collector" />
 
-  </ItemGroup>
+  <!-- Package identity -->
+  <PropertyGroup>
+    <PackageId>StruttonTechnologies.Core.ToolKit.GuardKit</PackageId>
+    <Title>StruttonTechnologies Core ToolKit GuardKit</Title>
+    <Description>Core guard clause framework and reusable guard evaluators for StruttonTechnologies applications.</Description>
+    <PackageTags>guard,guards,guardclauses,toolkit,core,strutton,StruttonTechnologies</PackageTags>
 
+    <!-- Versioning -->
+    <VersionPrefix>1.0.0</VersionPrefix>
+    <VersionSuffix>alpha</VersionSuffix>
 
+    <!-- Targeting -->
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+
+    <!-- Packaging -->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <IsPackable>true</IsPackable>
+
+    <!-- Repository metadata -->
+    <RepositoryUrl>https://github.com/StruttonTechnologies/StruttonTechnologies.Core.ToolKit.GuardKit</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Authors>Strutton Technologies</Authors>
+    <Company>Strutton Technologies</Company>
+  </PropertyGroup>
 
 </Project>

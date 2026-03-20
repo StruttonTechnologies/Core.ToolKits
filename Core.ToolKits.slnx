@@ -10,6 +10,7 @@
   </Folder>
   <Folder Name="/Source/">
     <Project Path="StruttonTechnologies.Core.ToolKit.GuardKit/StruttonTechnologies.Core.ToolKit.Guardkit.csproj" />
+    <Project Path="StruttonTechnologies.Core.ToolKit.Validation/StruttonTechnologies.Core.ToolKit.Validation.csproj" />
   </Folder>
   <Folder Name="/Source/Testing/">
     <Project Path="StruttonTechnologies.Core.ToolKit.TestingKit.Guard/StruttonTechnologies.Core.ToolKit.TestingKit.Guard.csproj" Id="f1c771a2-46e6-4526-ab56-54f9b3df795f" />

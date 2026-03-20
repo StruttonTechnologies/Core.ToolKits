@@ -1,11 +1,31 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <!-- Package identity -->
   <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <PackageId>StruttonTechnologies.Core.ToolKit.TestingKit</PackageId>
+    <Title>StruttonTechnologies Core ToolKit TestingKit</Title>
+    <Description>Reusable testing utilities, assertions, and helpers for StruttonTechnologies applications.</Description>
+    <PackageTags>testing,toolkit,assertions,xunit,strutton,StruttonTechnologies</PackageTags>
+
+    <!-- Versioning -->
+    <VersionPrefix>1.0.0</VersionPrefix>
+    <VersionSuffix>alpha</VersionSuffix>
+
+    <!-- Packaging -->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <IsPackable>true</IsPackable>
+
+    <!-- Repository metadata -->
+    <RepositoryUrl>https://github.com/StruttonTechnologies/StruttonTechnologies.Core.ToolKit.TestingKit</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Authors>Strutton Technologies</Authors>
+    <Company>Strutton Technologies</Company>
   </PropertyGroup>
 
+  <!-- Dependencies -->
   <ItemGroup>
     <PackageReference Include="xunit.v3.assert" />
     <PackageReference Include="xunit.v3.extensibility.core" />

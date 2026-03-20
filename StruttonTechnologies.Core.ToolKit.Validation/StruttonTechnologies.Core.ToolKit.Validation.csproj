@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Package identity -->
+  <PropertyGroup>
+    <PackageId>StruttonTechnologies.Core.ToolKit.Validation</PackageId>
+    <Title>StruttonTechnologies Core ToolKit Validation</Title>
+    <Description>Core validation framework and reusable validators for StruttonTechnologies applications.</Description>
+    <PackageTags>validation,toolkit,core,validators,fluent,strutton,StruttonTechnologies</PackageTags>
+
+    <!-- Versioning -->
+    <VersionPrefix>1.0.0</VersionPrefix>
+    <VersionSuffix>alpha</VersionSuffix>
+
+    <!-- Packaging -->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+
+    <!-- Repository metadata -->
+    <RepositoryUrl>https://github.com/StruttonTechnologies/StruttonTechnologies.Core.ToolKit.Validation</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Authors>Strutton Technologies</Authors>
+    <Company>Strutton Technologies</Company>
+  </PropertyGroup>
+
+</Project>

@@ -1,17 +1,40 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <!-- Package identity -->
   <PropertyGroup>
-    
+    <PackageId>StruttonTechnologies.Core.ToolKit.TestingKit.Guard</PackageId>
+    <Title>StruttonTechnologies Core ToolKit TestingKit Guard</Title>
+    <Description>Reusable guard testing assertions and helpers for StruttonTechnologies.Core.ToolKit.GuardKit.</Description>
+    <PackageTags>testing,toolkit,guard,guards,assertions,xunit,strutton,StruttonTechnologies</PackageTags>
+
+    <!-- Versioning -->
+    <VersionPrefix>1.0.0</VersionPrefix>
+    <VersionSuffix>alpha</VersionSuffix>
+
+    <!-- Packaging -->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <IsPackable>true</IsPackable>
+
+    <!-- Repository metadata -->
+    <RepositoryUrl>https://github.com/StruttonTechnologies/StruttonTechnologies.Core.ToolKit.TestingKit.Guard</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Authors>Strutton Technologies</Authors>
+    <Company>Strutton Technologies</Company>
   </PropertyGroup>
 
+  <!-- Dependencies -->
   <ItemGroup>
     <PackageReference Include="xunit.v3.assert" />
     <PackageReference Include="xunit.v3.extensibility.core" />
   </ItemGroup>
 
+  <!-- Project references -->
   <ItemGroup>
-    <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.GuardKit\StruttonTechnologies.Core.ToolKit.Guardkit.csproj" />
-    <ProjectReference Include="..\StruttonTechnologies.Core.Toolkit.TestingKit\StruttonTechnologies.Core.Toolkit.TestingKit.csproj" />
+    <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.GuardKit\StruttonTechnologies.Core.ToolKit.GuardKit.csproj" />
+    <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.TestingKit\StruttonTechnologies.Core.ToolKit.TestingKit.csproj" />
   </ItemGroup>
 
 </Project>
