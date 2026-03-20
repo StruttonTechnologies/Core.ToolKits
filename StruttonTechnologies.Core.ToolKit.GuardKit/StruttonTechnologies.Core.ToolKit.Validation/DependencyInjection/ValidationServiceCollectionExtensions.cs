@@ -1,70 +1,75 @@
-namespace StruttonTechnologies.Core.ToolKit.Validation.DependencyInjection;
+﻿using System.Reflection;
 
-using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
+
 using StruttonTechnologies.Core.ToolKit.Validation.Abstractions;
 
-/// <summary>
-/// Provides dependency injection registration helpers for validators.
-/// </summary>
-public static class ValidationServiceCollectionExtensions
+namespace StruttonTechnologies.Core.ToolKit.Validation.DependencyInjection
 {
     /// <summary>
-    /// Registers discovered validator implementations from the supplied assemblies.
+    /// Provides dependency injection registration helpers for validators.
     /// </summary>
-    /// <param name="services">The service collection to update.</param>
-    /// <param name="assembliesToScan">The assemblies to scan for validator implementations.</param>
-    /// <returns>The same <see cref="IServiceCollection"/> instance for chaining.</returns>
-    /// <exception cref="ArgumentNullException">Thrown when <paramref name="services"/> is null.</exception>
-    public static IServiceCollection AddValidators(this IServiceCollection services, params Assembly[] assembliesToScan)
+    public static class ValidationServiceCollectionExtensions
     {
-        ArgumentNullException.ThrowIfNull(services);
-
-        var assemblies = assembliesToScan is { Length: > 0 }
-            ? assembliesToScan
-            : new[] { Assembly.GetExecutingAssembly() };
-
-        foreach (var assembly in assemblies)
+        /// <summary>
+        /// Registers discovered validator implementations from the supplied assemblies.
+        /// </summary>
+        /// <param name="services">The service collection to update.</param>
+        /// <param name="assembliesToScan">The assemblies to scan for validator implementations.</param>
+        /// <returns>The same <see cref="IServiceCollection"/> instance for chaining.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="services"/> is null.</exception>
+        public static IServiceCollection AddValidators(this IServiceCollection services, params Assembly[] assembliesToScan)
         {
-            foreach (var implementationType in GetLoadableTypes(assembly).Where(IsConcreteValidatorType))
-            {
-                var validatorInterfaces = implementationType
-                    .GetInterfaces()
-                    .Where(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IValidator<>));
+            ArgumentNullException.ThrowIfNull(services);
 
-                foreach (var validatorInterface in validatorInterfaces)
+            Assembly[] assemblies = assembliesToScan is { Length: > 0 }
+                ? assembliesToScan
+                : new[] { Assembly.GetExecutingAssembly() };
+
+            foreach (Assembly? assembly in assemblies)
+            {
+                foreach (Type? implementationType in GetLoadableTypes(assembly).Where(IsConcreteValidatorType))
                 {
-                    services.AddScoped(validatorInterface, implementationType);
+                    IEnumerable<Type> validatorInterfaces = implementationType
+                        .GetInterfaces()
+                        .Where(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IValidator<>));
+
+                    foreach (Type? validatorInterface in validatorInterfaces)
+                    {
+                        services.AddScoped(validatorInterface, implementationType);
+                    }
                 }
+            }
+
+            return services;
+        }
+
+        /// <summary>
+        /// Returns all loadable types from the specified assembly.
+        /// </summary>
+        /// <param name="assembly">The assembly to inspect.</param>
+        /// <returns>A sequence of loadable <see cref="Type"/> instances.</returns>
+        private static IEnumerable<Type> GetLoadableTypes(Assembly assembly)
+        {
+            try
+            {
+                return assembly.GetTypes();
+            }
+            catch (ReflectionTypeLoadException ex)
+            {
+                return ex.Types.Where(type => type is not null)!;
             }
         }
 
-        return services;
-    }
-
-    /// <summary>
-    /// Returns all loadable types from the specified assembly.
-    /// </summary>
-    /// <param name="assembly">The assembly to inspect.</param>
-    /// <returns>A sequence of loadable <see cref="Type"/> instances.</returns>
-    private static IEnumerable<Type> GetLoadableTypes(Assembly assembly)
-    {
-        try
+        /// <summary>
+        /// Determines whether the specified type is a concrete validator implementation.
+        /// </summary>
+        /// <param name="type">The type to evaluate.</param>
+        /// <returns><see langword="true"/> when the type is a concrete validator; otherwise, <see langword="false"/>.</returns>
+        private static bool IsConcreteValidatorType(Type type)
         {
-            return assembly.GetTypes();
-        }
-        catch (ReflectionTypeLoadException ex)
-        {
-            return ex.Types.Where(type => type is not null)!;
+            return type is { IsClass: true, IsAbstract: false }
+                        && type.GetInterfaces().Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IValidator<>));
         }
     }
-
-    /// <summary>
-    /// Determines whether the specified type is a concrete validator implementation.
-    /// </summary>
-    /// <param name="type">The type to evaluate.</param>
-    /// <returns><see langword="true"/> when the type is a concrete validator; otherwise, <see langword="false"/>.</returns>
-    private static bool IsConcreteValidatorType(Type type)
-        => type is { IsClass: true, IsAbstract: false }
-            && type.GetInterfaces().Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IValidator<>));
 }
