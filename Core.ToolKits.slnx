@@ -19,5 +19,6 @@
   <Folder Name="/Tests/">
     <Project Path="StruttonTechnologies.Core.ToolKit.GuardKit.Tests/StruttonTechnologies.Core.ToolKit.GuardKit.Tests.csproj" Id="405180d5-26db-46d1-9768-4989f29798cf" />
     <Project Path="StruttonTechnologies.Core.ToolKit.TestingKit.Tests/StruttonTechnologies.Core.ToolKit.TestingKit.Tests.csproj" />
+    <Project Path="StruttonTechnologies.Core.ToolKit.Validation.Tests/StruttonTechnologies.Core.ToolKit.Validation.Tests.csproj" Id="7049a87e-f8a1-4672-a8bb-e6e7b45e2c4e" />
   </Folder>
 </Solution>

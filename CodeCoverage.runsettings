@@ -8,12 +8,10 @@
         <Configuration>
           <CodeCoverage>
             <ModulePaths>
-              <Exclude>
-                <ModulePath>.*\.Tests\.dll$</ModulePath>
-                <ModulePath>.*\.tests\.dll$</ModulePath>
-                <ModulePath>.*TestingKit\.Tests\.dll$</ModulePath>
-                <ModulePath>.*GuardKit\.Tests\.dll$</ModulePath>
-              </Exclude>
+                <Exclude>
+                    <ModulePath>.*[.]Tests[.]dll$</ModulePath>
+                    <ModulePath>.*[.]tests[.]dll$</ModulePath>
+                </Exclude>
             </ModulePaths>
           </CodeCoverage>
         </Configuration>
