@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="xunit.v3" />
+    <PackageReference Include="xunit.runner.visualstudio" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.GuardKit\StruttonTechnologies.Core.ToolKit.Guardkit.csproj" />
+    <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.TestingKit\StruttonTechnologies.Core.Toolkit.TestingKit.csproj" />
+    <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.TestingKit.Guard\StruttonTechnologies.Core.ToolKit.TestingKit.Guard.csproj" />
+  </ItemGroup>
+</Project>

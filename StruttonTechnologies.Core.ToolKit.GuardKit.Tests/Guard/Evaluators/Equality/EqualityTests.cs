@@ -3,6 +3,7 @@
     /// <summary>
     /// Contains test scenarios for equality-based guard evaluators.
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class EqualityTests
     {
         [Fact]
@@ -99,6 +100,7 @@
             Assert.Equal("selector", exception.ParamName);
         }
 
+        [ExcludeFromCodeCoverage]
         private sealed class IntHolder
         {
             public int Value { get; set; }

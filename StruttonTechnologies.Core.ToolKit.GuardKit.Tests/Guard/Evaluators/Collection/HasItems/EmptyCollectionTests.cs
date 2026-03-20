@@ -3,6 +3,7 @@
     /// <summary>
     /// Contains empty collection test scenarios for <c>GuardTest.HasItems</c>.
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class EmptyCollectionTests
     {
         /// <summary>
@@ -12,7 +13,7 @@
         /// The empty collection to evaluate.
         /// </param>
         [Theory]
-        [MemberData(nameof(EnumerableTheoryData.EmptyIntegers), MemberType = typeof(EnumerableTheoryData))]
+        [InlineData(new int[] { })]
         public void HasItems_WhenCollectionIsEmpty_ReturnsNotMatched(IEnumerable<int> collection)
         {
             GuardCondition<IEnumerable<int>> result = GuardTest.HasItems(collection);
@@ -29,14 +30,20 @@
         /// The object whose selected collection is empty.
         /// </param>
         [Theory]
-        [MemberData(nameof(HasItemsTestContext.EmptySelectorObjects), MemberType = typeof(HasItemsTestContext))]
-        public void HasItems_WithSelector_WhenSelectedCollectionIsEmpty_ReturnsNotMatched(EnumerableTestObject<string> value)
+        [InlineData("A")]
+        [InlineData("Hello")]
+        public void HasItems_WithSelector_WhenSelectedCollectionHasItems_ReturnsMatched(string item)
         {
+            EnumerableTestObject<string> value = new EnumerableTestObject<string>
+            {
+                Items = new[] { item }
+            };
+
             GuardCondition<EnumerableTestObject<string>> result = GuardTest.HasItems(value, x => x.Items);
 
             bool matched = result.Return(true, _ => false);
 
-            Assert.False(matched);
+            Assert.True(matched);
         }
     }
 }

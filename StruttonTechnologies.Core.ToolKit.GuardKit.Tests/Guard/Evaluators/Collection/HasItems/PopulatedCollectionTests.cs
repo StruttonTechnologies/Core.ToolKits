@@ -12,7 +12,9 @@
         /// The populated collection to evaluate.
         /// </param>
         [Theory]
-        [MemberData(nameof(EnumerableTheoryData.PopulatedIntegers), MemberType = typeof(EnumerableTheoryData))]
+        [InlineData(new[] { 1 })]
+        [InlineData(new[] { 1, 2 })]
+        [InlineData(new[] { 1, 2, 3 })]
         public void HasItems_WhenCollectionContainsItems_ReturnsMatched(IEnumerable<int> collection)
         {
             GuardCondition<IEnumerable<int>> result = GuardTest.HasItems(collection);
@@ -28,10 +30,15 @@
         /// <param name="value">
         /// The object whose selected collection contains items.
         /// </param>
+
         [Theory]
-        [MemberData(nameof(HasItemsTestContext.PopulatedSelectorObjects), MemberType = typeof(HasItemsTestContext))]
-        public void HasItems_WithSelector_WhenSelectedCollectionContainsItems_ReturnsMatched(EnumerableTestObject<string> value)
+        [InlineData("one")]
+        [InlineData("one", "two")]
+        [InlineData("one", "two", "three")]
+        public void HasItems_WithSelector_WhenSelectedCollectionContainsItems_ReturnsMatched(params string[] items)
         {
+            EnumerableTestObject<string> value = new EnumerableTestObject<string> { Items = items };
+
             GuardCondition<EnumerableTestObject<string>> result = GuardTest.HasItems(value, x => x.Items);
 
             bool matched = result.Return(true, _ => false);

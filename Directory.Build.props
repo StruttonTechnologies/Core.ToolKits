@@ -18,12 +18,24 @@
 		<TreatWarningsAsErrors>false</TreatWarningsAsErrors>
 		<Deterministic>true</Deterministic>
 		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
-
-		<!-- Default IsPackable to true (override with false in test projects) -->
+    <!-- Default IsPackable to true (override with false in test projects) -->
 		<IsPackable Condition="'$(IsPackable)' == ''">true</IsPackable>
 		<IsPackable Condition="$(MSBuildProjectName.EndsWith('.Tests'))">false</IsPackable>
 	</PropertyGroup>
-	<ItemGroup Condition="'$(IsPackable)' == 'true'">
+  <PropertyGroup Condition="'$(IsTestProject)' == 'true'">
+    <CollectCoverage>true</CollectCoverage>
+
+    <!-- Prefer include-first strategy -->
+    <Include>[StruttonTechnologies.*]*</Include>
+
+    <!-- Explicit exclusions -->
+    <Exclude>
+      [*.tests]*;
+      [*.Tests]*;
+    </Exclude>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(IsPackable)' == 'true'">
 		<PackageReference Include="StruttonTechnologies.Assets.Branding"
 						  PrivateAssets="all" />
 	</ItemGroup>

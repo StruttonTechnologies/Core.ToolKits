@@ -3,6 +3,7 @@
     /// <summary>
     /// Contains test scenarios for <c>GuardTest.IsEmpty</c>.
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class IsEmptyTests
     {
         [Fact]
@@ -16,7 +17,7 @@
         }
 
         [Theory]
-        [MemberData(nameof(EnumerableTheoryData.EmptyIntegers), MemberType = typeof(EnumerableTheoryData))]
+        [InlineData(new int[] { })]
         public void IsEmpty_WhenCollectionIsEmpty_ReturnsMatched(IEnumerable<int> value)
         {
             bool matched = GuardTest.IsEmpty(value).Return(true, _ => false);
@@ -25,7 +26,9 @@
         }
 
         [Theory]
-        [MemberData(nameof(EnumerableTheoryData.PopulatedIntegers), MemberType = typeof(EnumerableTheoryData))]
+        [InlineData(new[] { 1 })]
+        [InlineData(new[] { 1, 2 })]
+        [InlineData(new[] { 1, 2, 3 })]
         public void IsEmpty_WhenCollectionHasItems_ReturnsNotMatched(IEnumerable<int> value)
         {
             bool matched = GuardTest.IsEmpty(value).Return(true, _ => false);
@@ -54,7 +57,7 @@
         }
 
         [Theory]
-        [MemberData(nameof(EnumerableTheoryData.EmptyIntegers), MemberType = typeof(EnumerableTheoryData))]
+        [InlineData(new int[] { })]
         public void IsEmpty_WithSelector_WhenSelectedCollectionIsEmpty_ReturnsMatched(IEnumerable<int> items)
         {
             EnumerableTestObject<int> value = new EnumerableTestObject<int> { Items = items };
@@ -65,7 +68,9 @@
         }
 
         [Theory]
-        [MemberData(nameof(EnumerableTheoryData.PopulatedIntegers), MemberType = typeof(EnumerableTheoryData))]
+        [InlineData(new[] { 1 })]
+        [InlineData(new[] { 1, 2 })]
+        [InlineData(new[] { 1, 2, 3 })]
         public void IsEmpty_WithSelector_WhenSelectedCollectionHasItems_ReturnsNotMatched(IEnumerable<int> items)
         {
             EnumerableTestObject<int> value = new EnumerableTestObject<int> { Items = items };

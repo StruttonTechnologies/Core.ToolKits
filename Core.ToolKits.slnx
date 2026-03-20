@@ -1,6 +1,7 @@
 <Solution>
   <Folder Name="/Solution Items/">
     <File Path=".editorconfig" />
+    <File Path="CodeCoverage.runsettings" />
     <File Path="Directory.Build.props" />
     <File Path="Directory.Build.targets" />
     <File Path="Directory.Packages.props" />
@@ -16,5 +17,6 @@
   </Folder>
   <Folder Name="/Tests/">
     <Project Path="StruttonTechnologies.Core.ToolKit.GuardKit.Tests/StruttonTechnologies.Core.ToolKit.GuardKit.Tests.csproj" Id="405180d5-26db-46d1-9768-4989f29798cf" />
+    <Project Path="StruttonTechnologies.Core.ToolKit.TestingKit.Tests/StruttonTechnologies.Core.ToolKit.TestingKit.Tests.csproj" />
   </Folder>
 </Solution>

@@ -3,6 +3,7 @@
     /// <summary>
     /// Contains test scenarios for general guard evaluators.
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class GeneralEvaluatorTests
     {
         [Fact]
@@ -165,7 +166,8 @@
         }
 
         [Theory]
-        [MemberData(nameof(BooleanTheoryData.TrueAndFalse), MemberType = typeof(BooleanTheoryData))]
+        [InlineData(true)]
+        [InlineData(false)]
         public void IsTrue_WhenEvaluated_ReturnsExpectedResult(bool value)
         {
             bool matched = GuardTest.IsTrue(value).Return(true, _ => false);
@@ -194,7 +196,8 @@
         }
 
         [Theory]
-        [MemberData(nameof(BooleanTheoryData.TrueAndFalse), MemberType = typeof(BooleanTheoryData))]
+        [InlineData(true)]
+        [InlineData(false)]
         public void IsFalse_WhenEvaluated_ReturnsExpectedResult(bool value)
         {
             bool matched = GuardTest.IsFalse(value).Return(true, _ => false);

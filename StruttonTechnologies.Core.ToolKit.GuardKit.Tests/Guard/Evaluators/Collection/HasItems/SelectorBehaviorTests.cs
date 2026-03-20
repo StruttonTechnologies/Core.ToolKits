@@ -9,10 +9,23 @@
         /// <summary>
         /// Verifies that the selector overload works with a nested property selector.
         /// </summary>
+        /// <summary>
+        /// Verifies that the selector overload works with a nested property selector.
+        /// </summary>
         [Theory]
-        [MemberData(nameof(HasItemsTestContext.NestedPopulatedSelectorObjects), MemberType = typeof(HasItemsTestContext))]
-        public void HasItems_WithSelector_WhenNestedPropertyContainsItems_ReturnsMatched(ParentTestObject<EnumerableTestObject<int>> value)
+        [InlineData(1)]
+        [InlineData(1, 2)]
+        [InlineData(1, 2, 3)]
+        public void HasItems_WithSelector_WhenNestedPropertyContainsItems_ReturnsMatched(params int[] items)
         {
+            ParentTestObject<EnumerableTestObject<int>> value = new ParentTestObject<EnumerableTestObject<int>>
+            {
+                Child = new EnumerableTestObject<int>
+                {
+                    Items = items,
+                },
+            };
+
             GuardCondition<ParentTestObject<EnumerableTestObject<int>>> result =
                 GuardTest.HasItems(value, x => x.Child!.Items);
 
@@ -27,7 +40,7 @@
         [Fact]
         public void HasItems_WithSelector_WhenFilteredCollectionIsEmpty_ReturnsNotMatched()
         {
-            var value = new EnumerableTestObject<string>
+            EnumerableTestObject<string> value = new EnumerableTestObject<string>
             {
                 Items = new[] { "one", "two", "three" },
             };
@@ -46,7 +59,7 @@
         [Fact]
         public void HasItems_WithSelector_WhenFilteredCollectionContainsItems_ReturnsMatched()
         {
-            var value = new EnumerableTestObject<string>
+            EnumerableTestObject<string> value = new EnumerableTestObject<string>
             {
                 Items = new[] { "alpha", "beta", "gamma" },
             };
