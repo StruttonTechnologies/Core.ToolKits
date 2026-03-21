@@ -1,75 +1,82 @@
-﻿using System.Reflection;
+﻿using Microsoft.Extensions.DependencyInjection;
 
-using Microsoft.Extensions.DependencyInjection;
+using StruttonTechnologies.Core.ToolKit.Validation.Validators.Common;
+using StruttonTechnologies.Core.ToolKit.Validation.Validators.Composite;
+using StruttonTechnologies.Core.ToolKit.Validation.Validators.Format;
 
-using StruttonTechnologies.Core.ToolKit.Validation.Abstractions;
+namespace StruttonTechnologies.Core.ToolKit.Validation.DependencyInjection;
 
-namespace StruttonTechnologies.Core.ToolKit.Validation.DependencyInjection
+/// <summary>
+/// Provides dependency injection registration methods for Validation.
+/// </summary>
+public static class ValidationServiceCollectionExtensions
 {
     /// <summary>
-    /// Provides dependency injection registration helpers for validators.
+    /// Registers Validation services.
     /// </summary>
-    public static class ValidationServiceCollectionExtensions
+    /// <param name="services">The service collection.</param>
+    /// <returns>The service collection.</returns>
+    /// <exception cref="ArgumentNullException">
+    /// Thrown when <paramref name="services"/> is <see langword="null"/>.
+    /// </exception>
+    public static IServiceCollection AddValidation(this IServiceCollection services)
     {
-        /// <summary>
-        /// Registers discovered validator implementations from the supplied assemblies.
-        /// </summary>
-        /// <param name="services">The service collection to update.</param>
-        /// <param name="assembliesToScan">The assemblies to scan for validator implementations.</param>
-        /// <returns>The same <see cref="IServiceCollection"/> instance for chaining.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when <paramref name="services"/> is null.</exception>
-        public static IServiceCollection AddValidators(this IServiceCollection services, params Assembly[] assembliesToScan)
-        {
-            ArgumentNullException.ThrowIfNull(services);
+        ArgumentNullException.ThrowIfNull(services);
 
-            Assembly[] assemblies = assembliesToScan is { Length: > 0 }
-                ? assembliesToScan
-                : new[] { Assembly.GetExecutingAssembly() };
+        services
+            .AddValidationCommonValidators()
+            .AddValidationFormatValidators()
+            .AddValidationCompositeValidators();
 
-            foreach (Assembly? assembly in assemblies)
-            {
-                foreach (Type? implementationType in GetLoadableTypes(assembly).Where(IsConcreteValidatorType))
-                {
-                    IEnumerable<Type> validatorInterfaces = implementationType
-                        .GetInterfaces()
-                        .Where(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IValidator<>));
+        return services;
+    }
 
-                    foreach (Type? validatorInterface in validatorInterfaces)
-                    {
-                        services.AddScoped(validatorInterface, implementationType);
-                    }
-                }
-            }
+    /// <summary>
+    /// Registers common reusable validators.
+    /// </summary>
+    /// <param name="services">The service collection.</param>
+    /// <returns>The service collection.</returns>
+    private static IServiceCollection AddValidationCommonValidators(this IServiceCollection services)
+    {
+        ArgumentNullException.ThrowIfNull(services);
 
-            return services;
-        }
+        // Open generic validators
+        services.AddTransient(typeof(NotDefaultValidator<>));
+        services.AddTransient(typeof(IdValidator<>));
 
-        /// <summary>
-        /// Returns all loadable types from the specified assembly.
-        /// </summary>
-        /// <param name="assembly">The assembly to inspect.</param>
-        /// <returns>A sequence of loadable <see cref="Type"/> instances.</returns>
-        private static IEnumerable<Type> GetLoadableTypes(Assembly assembly)
-        {
-            try
-            {
-                return assembly.GetTypes();
-            }
-            catch (ReflectionTypeLoadException ex)
-            {
-                return ex.Types.Where(type => type is not null)!;
-            }
-        }
+        return services;
+    }
 
-        /// <summary>
-        /// Determines whether the specified type is a concrete validator implementation.
-        /// </summary>
-        /// <param name="type">The type to evaluate.</param>
-        /// <returns><see langword="true"/> when the type is a concrete validator; otherwise, <see langword="false"/>.</returns>
-        private static bool IsConcreteValidatorType(Type type)
-        {
-            return type is { IsClass: true, IsAbstract: false }
-                        && type.GetInterfaces().Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IValidator<>));
-        }
+    /// <summary>
+    /// Registers format validators that can be constructed without external runtime data.
+    /// </summary>
+    /// <param name="services">The service collection.</param>
+    /// <returns>The service collection.</returns>
+    private static IServiceCollection AddValidationFormatValidators(this IServiceCollection services)
+    {
+        ArgumentNullException.ThrowIfNull(services);
+
+        services.AddTransient<EmailFormatValidator>();
+        services.AddTransient<PhoneNumberFormatValidator>();
+        services.AddTransient<UsZipCodeFormatValidator>();
+
+        // Intentionally not registering RegexValidator here because it typically
+        // requires a pattern and optional custom message supplied by the consumer.
+
+        return services;
+    }
+
+    /// <summary>
+    /// Registers composite validators.
+    /// </summary>
+    /// <param name="services">The service collection.</param>
+    /// <returns>The service collection.</returns>
+    private static IServiceCollection AddValidationCompositeValidators(this IServiceCollection services)
+    {
+        ArgumentNullException.ThrowIfNull(services);
+
+        services.AddTransient(typeof(CompositeValidator<>));
+
+        return services;
     }
 }

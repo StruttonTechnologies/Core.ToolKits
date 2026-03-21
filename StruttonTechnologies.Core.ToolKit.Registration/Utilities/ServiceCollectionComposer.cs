@@ -1,8 +1,6 @@
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
+
 using StruttonTechnologies.Core.ToolKit.Registration.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace StruttonTechnologies.Core.ToolKit.Registration.Utilities
 {
