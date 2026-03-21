@@ -1,4 +1,4 @@
-namespace StruttonTechnologies.Core.ToolKit.Validation.Tests.Validators.Common
+﻿namespace StruttonTechnologies.Core.ToolKit.Validation.Tests.Validators.Common
 {
     /// <summary>
     /// Contains test scenarios for <see cref="NotDefaultValidator{T}"/>.
@@ -8,7 +8,6 @@ namespace StruttonTechnologies.Core.ToolKit.Validation.Tests.Validators.Common
     {
         [Theory]
         [InlineData(0)]
-        [InlineData(false ? 1 : 0)]
         public void Validate_WhenIntIsDefault_ReturnsFailure(int value)
         {
             NotDefaultValidator<int> validator = new();

@@ -1,108 +1,93 @@
-using System.Reflection;
-
-namespace StruttonTechnologies.Core.ToolKit.Validation.Tests.DependencyInjection
+﻿namespace StruttonTechnologies.Core.ToolKit.Validation.Tests.DependencyInjection
 {
     /// <summary>
     /// Contains test scenarios for <see cref="ValidationServiceCollectionExtensions"/>.
     /// </summary>
-    [ExcludeFromCodeCoverage]
     public sealed class ValidationServiceCollectionExtensionsTests
     {
+        /// <summary>
+        /// Verifies that <c>AddValidation</c> throws when services is null.
+        /// </summary>
         [Fact]
-        public void AddValidators_WhenServicesIsNull_ThrowsArgumentNullException()
+        public void AddValidation_WhenServicesIsNull_ThrowsArgumentNullException()
         {
-            Assert.Throws<ArgumentNullException>(() => ValidationServiceCollectionExtensions.AddValidators(null!, typeof(ValidationServiceCollectionExtensionsTests).Assembly));
+            IServiceCollection? services = null;
+
+            Assert.Throws<ArgumentNullException>(() => services!.AddValidation());
         }
 
+        /// <summary>
+        /// Verifies that <c>AddValidation</c> returns the same service collection instance.
+        /// </summary>
         [Fact]
-        public void AddValidators_WhenAssemblyContainsConcreteValidators_RegistersValidatorInterfaces()
+        public void AddValidation_WhenCalled_ReturnsSameServiceCollection()
         {
-            TestServiceCollection services = new();
+            IServiceCollection services = new ServiceCollection();
 
-            IServiceCollection returned = services.AddValidators(typeof(ValidationServiceCollectionExtensionsTests).Assembly);
+            IServiceCollection returned = services.AddValidation();
 
             Assert.Same(services, returned);
-            Assert.Contains(services, descriptor =>
-                descriptor.ServiceType == typeof(IValidator<string>) &&
-                descriptor.ImplementationType == typeof(TestStringValidator) &&
-                descriptor.Lifetime == ServiceLifetime.Scoped);
-            Assert.Contains(services, descriptor =>
-                descriptor.ServiceType == typeof(IValidator<int>) &&
-                descriptor.ImplementationType == typeof(TestIntValidator) &&
-                descriptor.Lifetime == ServiceLifetime.Scoped);
         }
 
+        /// <summary>
+        /// Verifies that <c>AddValidation</c> registers explicit validator services.
+        /// </summary>
         [Fact]
-        public void AddValidators_WhenAssemblyParameterIsOmitted_UsesExecutingAssembly()
+        public void AddValidation_WhenCalled_RegistersExpectedValidators()
         {
-            TestServiceCollection services = new();
+            IServiceCollection services = new ServiceCollection();
 
-            services.AddValidators();
+            services.AddValidation();
 
             Assert.Contains(services, descriptor =>
-                descriptor.ServiceType == typeof(IValidator<string>) &&
-                descriptor.ImplementationType == typeof(EmailFormatValidator));
-        }
-
-        [Fact]
-        public void AddValidators_WhenTypeDoesNotImplementValidator_DoesNotRegisterType()
-        {
-            TestServiceCollection services = new();
-
-            services.AddValidators(typeof(ValidationServiceCollectionExtensionsTests).Assembly);
-
-            Assert.DoesNotContain(services, descriptor => descriptor.ImplementationType == typeof(NonValidatorType));
-        }
-
-        [Fact]
-        public void AddValidators_WhenTypeIsAbstract_DoesNotRegisterType()
-        {
-            TestServiceCollection services = new();
-
-            services.AddValidators(typeof(ValidationServiceCollectionExtensionsTests).Assembly);
-
-            Assert.DoesNotContain(services, descriptor => descriptor.ImplementationType == typeof(AbstractTestValidator));
-        }
-
-        [Fact]
-        public void AddValidators_WhenTypeImplementsMultipleValidatorInterfaces_RegistersEachInterface()
-        {
-            TestServiceCollection services = new();
-
-            services.AddValidators(typeof(ValidationServiceCollectionExtensionsTests).Assembly);
+                descriptor.ServiceType == typeof(NotDefaultValidator<>) &&
+                descriptor.ImplementationType == typeof(NotDefaultValidator<>) &&
+                descriptor.Lifetime == ServiceLifetime.Transient);
 
             Assert.Contains(services, descriptor =>
-                descriptor.ServiceType == typeof(IValidator<Guid>) &&
-                descriptor.ImplementationType == typeof(MultiValidator));
+                descriptor.ServiceType == typeof(IdValidator<>) &&
+                descriptor.ImplementationType == typeof(IdValidator<>) &&
+                descriptor.Lifetime == ServiceLifetime.Transient);
+
             Assert.Contains(services, descriptor =>
-                descriptor.ServiceType == typeof(IValidator<long>) &&
-                descriptor.ImplementationType == typeof(MultiValidator));
+                descriptor.ServiceType == typeof(EmailFormatValidator) &&
+                descriptor.ImplementationType == typeof(EmailFormatValidator) &&
+                descriptor.Lifetime == ServiceLifetime.Transient);
+
+            Assert.Contains(services, descriptor =>
+                descriptor.ServiceType == typeof(PhoneNumberFormatValidator) &&
+                descriptor.ImplementationType == typeof(PhoneNumberFormatValidator) &&
+                descriptor.Lifetime == ServiceLifetime.Transient);
+
+            Assert.Contains(services, descriptor =>
+                descriptor.ServiceType == typeof(UsZipCodeFormatValidator) &&
+                descriptor.ImplementationType == typeof(UsZipCodeFormatValidator) &&
+                descriptor.Lifetime == ServiceLifetime.Transient);
+
+            Assert.Contains(services, descriptor =>
+                descriptor.ServiceType == typeof(CompositeValidator<>) &&
+                descriptor.ImplementationType == typeof(CompositeValidator<>) &&
+                descriptor.Lifetime == ServiceLifetime.Transient);
         }
 
-        private sealed class TestServiceCollection : List<ServiceDescriptor>, IServiceCollection;
-
-        private sealed class TestStringValidator : IValidator<string>
+        /// <summary>
+        /// Verifies that <c>AddValidation</c> does not register validators that require runtime configuration.
+        /// </summary>
+        [Fact]
+        public void AddValidation_WhenCalled_DoesNotRegisterPolicyOrPatternValidators()
         {
-            public ValidationResult Validate(string input) => ValidationResult.Success(input);
+            IServiceCollection services = new ServiceCollection();
+
+            services.AddValidation();
+
+            Assert.DoesNotContain(services, descriptor =>
+                descriptor.ServiceType == typeof(RegexValidator));
+
+            Assert.DoesNotContain(services, descriptor =>
+                descriptor.ServiceType == typeof(WhitelistEmailValidator));
+
+            Assert.DoesNotContain(services, descriptor =>
+                descriptor.ServiceType == typeof(BlacklistPhoneValidator));
         }
-
-        private sealed class TestIntValidator : IValidator<int>
-        {
-            public ValidationResult Validate(int input) => ValidationResult.Success(input.ToString());
-        }
-
-        private abstract class AbstractTestValidator : IValidator<string>
-        {
-            public abstract ValidationResult Validate(string input);
-        }
-
-        private sealed class MultiValidator : IValidator<Guid>, IValidator<long>
-        {
-            ValidationResult IValidator<Guid>.Validate(Guid input) => ValidationResult.Success(input.ToString());
-
-            ValidationResult IValidator<long>.Validate(long input) => ValidationResult.Success(input.ToString());
-        }
-
-        private sealed class NonValidatorType;
     }
 }

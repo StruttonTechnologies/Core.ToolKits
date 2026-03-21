@@ -1,4 +1,4 @@
-namespace StruttonTechnologies.Core.ToolKit.Validation.Tests.Validators.Format
+﻿namespace StruttonTechnologies.Core.ToolKit.Validation.Tests.Validators.Format
 {
     /// <summary>
     /// Contains test scenarios for <see cref="BlacklistPhoneValidator"/>.
@@ -42,10 +42,9 @@ namespace StruttonTechnologies.Core.ToolKit.Validation.Tests.Validators.Format
 
         [Theory]
         [InlineData("+15551234567")]
-        [InlineData("+15551234567")]
         public void Validate_WhenInputIsBlacklisted_ReturnsFailure(string input)
         {
-            BlacklistPhoneValidator validator = new(["+15551234567"]);
+            BlacklistPhoneValidator validator = new([input]);
 
             ValidationResult result = validator.Validate(input);
 
