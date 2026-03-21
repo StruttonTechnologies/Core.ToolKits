@@ -4,6 +4,11 @@
     <IsPackable>false</IsPackable>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Guard\GuardCondition\Behaviors\ValidationBehaviors\ReturnValidationAsync\**" />
+    <EmbeddedResource Remove="Guard\GuardCondition\Behaviors\ValidationBehaviors\ReturnValidationAsync\**" />
+    <None Remove="Guard\GuardCondition\Behaviors\ValidationBehaviors\ReturnValidationAsync\**" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="coverlet.collector" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" />
     <PackageReference Include="xunit.v3" />
@@ -12,5 +17,8 @@
   <ItemGroup>
     <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.GuardKit\StruttonTechnologies.Core.ToolKit.Guardkit.csproj" />
     <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.TestingKit\StruttonTechnologies.Core.Toolkit.TestingKit.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Guard\GuardCondition\Behaviors\ValidationBehaviors\" />
   </ItemGroup>
 </Project>

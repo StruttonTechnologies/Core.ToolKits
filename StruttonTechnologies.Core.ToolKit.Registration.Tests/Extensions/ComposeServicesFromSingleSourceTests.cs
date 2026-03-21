@@ -1,3 +1,4 @@
+﻿using StruttonTechnologies.Core.ToolKit.Registration.Extensions;
 using StruttonTechnologies.Core.ToolKit.Registration.Tests.TestDoubles;
 
 namespace StruttonTechnologies.Core.ToolKit.Registration.Tests.Extensions
@@ -28,12 +29,14 @@ namespace StruttonTechnologies.Core.ToolKit.Registration.Tests.Extensions
         [Fact]
         public void ComposeServicesFrom_WhenTargetIsNull_ThrowsArgumentNullException()
         {
-            ServiceCollection source = new();
             IServiceCollection? target = null;
+            ServiceCollection source = new();
+            ServiceCompositionOptions options = new();
 
-            ArgumentNullException exception = Assert.Throws<ArgumentNullException>(() => target!.ComposeServicesFrom(source));
+            ArgumentNullException exception = Assert.Throws<ArgumentNullException>(() =>
+                target!.ComposeServicesFrom(source, options));
 
-            Assert.Equal("services", exception.ParamName);
+            Assert.Equal("target", exception.ParamName);
         }
 
         /// <summary>

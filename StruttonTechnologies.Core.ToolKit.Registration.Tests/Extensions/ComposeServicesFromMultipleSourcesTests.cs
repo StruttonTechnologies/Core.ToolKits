@@ -1,15 +1,15 @@
-using StruttonTechnologies.Core.ToolKit.Registration.Tests.TestDoubles;
+﻿using System.Diagnostics.CodeAnalysis;
+
+using StruttonTechnologies.Core.ToolKit.Registration.Extensions;
 
 namespace StruttonTechnologies.Core.ToolKit.Registration.Tests.Extensions
 {
     /// <summary>
-    /// Contains test scenarios for composing multiple source collections through extension methods.
+    /// Contains test scenarios for composing services from multiple source collections.
     /// </summary>
-    public sealed class ComposeServicesFromMultipleSourcesTests
+    [ExcludeFromCodeCoverage]
+    public class ComposeServicesFromMultipleSourcesTests
     {
-        /// <summary>
-        /// Verifies that the extension method returns the original target collection.
-        /// </summary>
         [Fact]
         public void ComposeServicesFrom_WhenCalledWithMultipleSources_ReturnsTargetCollection()
         {
@@ -20,37 +20,39 @@ namespace StruttonTechnologies.Core.ToolKit.Registration.Tests.Extensions
             firstSource.AddTransient<ISampleService, SampleService>();
             secondSource.AddTransient<ISecondaryService, SecondaryService>();
 
-            IServiceCollection result = target.ComposeServicesFrom(null, firstSource, secondSource);
+            IServiceCollection result = target.ComposeServicesFrom(firstSource, secondSource);
 
             Assert.Same(target, result);
         }
 
-        /// <summary>
-        /// Verifies that the extension method throws when the target collection is null.
-        /// </summary>
         [Fact]
         public void ComposeServicesFrom_WhenTargetIsNull_ThrowsArgumentNullException()
         {
-            ServiceCollection source = new();
             IServiceCollection? target = null;
+            ServiceCollection source = new();
 
-            ArgumentNullException exception = Assert.Throws<ArgumentNullException>(() => target!.ComposeServicesFrom(null, source));
+            ArgumentNullException exception = Assert.Throws<ArgumentNullException>(() =>
+                target!.ComposeServicesFrom(source));
 
-            Assert.Equal("services", exception.ParamName);
+            Assert.Equal("target", exception.ParamName);
         }
 
-        /// <summary>
-        /// Verifies that the extension method throws when the sources array is null.
-        /// </summary>
         [Fact]
         public void ComposeServicesFrom_WhenSourcesAreNull_ThrowsArgumentNullException()
         {
             ServiceCollection target = new();
             IServiceCollection[]? sources = null;
 
-            ArgumentNullException exception = Assert.Throws<ArgumentNullException>(() => target.ComposeServicesFrom(null, sources!));
+            ArgumentNullException exception = Assert.Throws<ArgumentNullException>(() =>
+                target.ComposeServicesFrom(sources!));
 
             Assert.Equal("sources", exception.ParamName);
         }
+
+        private interface ISampleService;
+        private sealed class SampleService : ISampleService;
+
+        private interface ISecondaryService;
+        private sealed class SecondaryService : ISecondaryService;
     }
 }

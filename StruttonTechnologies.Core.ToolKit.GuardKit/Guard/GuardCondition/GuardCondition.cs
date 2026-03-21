@@ -11,9 +11,6 @@ namespace StruttonTechnologies.Core.ToolKit.GuardKit
     /// <summary>
     /// Represents the continuation state returned from a guard evaluation.
     /// </summary>
-    /// <typeparam name="T">
-    /// The type of value being evaluated.
-    /// </typeparam>
     /// <remarks>
     /// Instances of this type are produced by <see cref="Guard"/> entry methods
     /// and used as part of the fluent guard pipeline.
