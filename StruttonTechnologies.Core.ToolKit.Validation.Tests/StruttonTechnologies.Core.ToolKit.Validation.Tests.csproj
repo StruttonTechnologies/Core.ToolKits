@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <IsTestProject>true</IsTestProject>
     <IsPackable>false</IsPackable>
@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Using Include="Xunit" />
+    <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.Validation\StruttonTechnologies.Core.ToolKit.Validation.csproj" />
   </ItemGroup>
-
 </Project>

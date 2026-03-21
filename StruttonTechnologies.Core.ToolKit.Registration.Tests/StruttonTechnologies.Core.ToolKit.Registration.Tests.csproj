@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Package identity -->
+  <PropertyGroup>
+    <PackageId>StruttonTechnologies.Core.ToolKit.Registration.Tests</PackageId>
+    <Title>StruttonTechnologies Core ToolKit Registration Tests</Title>
+    <Description>Unit tests for StruttonTechnologies.Core.ToolKit.Registration.</Description>
+    <PackageTags>registration,dependencyinjection,toolkit,tests,xunit,strutton,StruttonTechnologies</PackageTags>
+
+    <!-- Versioning -->
+    <VersionPrefix>1.0.0</VersionPrefix>
+    <VersionSuffix>alpha</VersionSuffix>
+
+    <!-- Test project settings -->
+    <IsTestProject>true</IsTestProject>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <!-- Dependencies -->
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="xunit.v3" />
+    <PackageReference Include="xunit.runner.visualstudio" />
+  </ItemGroup>
+
+  <!-- Project references -->
+  <ItemGroup>
+    <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.Registration\StruttonTechnologies.Core.ToolKit.Registration.csproj" />
+  </ItemGroup>
+
+</Project>

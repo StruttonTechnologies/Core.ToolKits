@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Package identity -->
+  <PropertyGroup>
+    <PackageId>StruttonTechnologies.Core.ToolKit.Registration</PackageId>
+    <Title>StruttonTechnologies Core ToolKit Registration</Title>
+    <Description>Service collection composition helpers for StruttonTechnologies applications.</Description>
+    <PackageTags>registration,dependencyinjection,di,composition,toolkit,core,strutton,StruttonTechnologies</PackageTags>
+
+    <!-- Versioning -->
+    <VersionPrefix>1.0.0</VersionPrefix>
+    <VersionSuffix>alpha</VersionSuffix>
+
+    <!-- Packaging -->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <IsPackable>true</IsPackable>
+
+    <!-- Repository metadata -->
+    <RepositoryUrl>https://github.com/StruttonTechnologies/CoreCapabilities</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Authors>Strutton Technologies</Authors>
+    <Company>Strutton Technologies</Company>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+  </ItemGroup>
+
+</Project>
