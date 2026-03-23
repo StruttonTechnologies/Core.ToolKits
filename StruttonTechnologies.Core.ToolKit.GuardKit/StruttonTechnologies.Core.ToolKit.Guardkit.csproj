@@ -27,5 +27,8 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.Validation\StruttonTechnologies.Core.ToolKit.Validation.csproj" />
+  </ItemGroup>
 
 </Project>
