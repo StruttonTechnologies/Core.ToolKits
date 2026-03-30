@@ -39,13 +39,13 @@ if (user == null)
 {
     return Array.Empty<LoginInfo>();
 }
-
+```
 You can write:
 
 ```csharp
 return await Guard.IsNull(user)
     .ReturnEmptyArray(u => _userManager.GetLoginsAsync(u));
-
+```
 ---
 
 ### Common Usage Patterns
@@ -55,7 +55,7 @@ return await Guard.IsNull(user)
 ```csharp
 return Guard.IsNull(user)
     .Return(Array.Empty<LoginInfo>(), u => u.Logins);
-
+```
 ---
 
 #### Returning an error / throwing an exception
@@ -63,7 +63,7 @@ return Guard.IsNull(user)
 ```csharp
 var user = Guard.IsNull(user)
     .ReturnOrThrow(() => new UserNotFoundException());
-
+```
 Or with a continuation:
 
 ```csharp
@@ -71,7 +71,7 @@ return await Guard.IsNull(user)
     .ReturnOrThrow(
         () => new UserNotFoundException(),
         u => _userManager.GetLoginsAsync(u));
-
+```
 ---
 
 #### Using selectors (checking nested values)
@@ -79,7 +79,7 @@ return await Guard.IsNull(user)
 ```csharp
 return await Guard.IsNullOrWhiteSpace(user, u => u.Email)
     .ReturnEmptyArray(u => _userManager.GetLoginsAsync(u));
-
+```
 ---
 
 ### Why this matters
