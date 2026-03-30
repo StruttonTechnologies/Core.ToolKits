@@ -1,4 +1,34 @@
-﻿### GuardKit
+﻿# Core.ToolKit
+
+Core.ToolKit provides reusable engineering utilities designed to support consistent, maintainable, and architecture-aligned application development.
+
+These libraries solve common cross-cutting concerns such as guard logic, validation, service composition, and testing support without introducing unnecessary abstraction or hidden behavior.
+
+---
+
+## 🎯 Purpose
+
+In most systems, certain patterns appear repeatedly:
+
+- guard clauses  
+- validation  
+- dependency registration  
+- test setup and utilities  
+
+When implemented inconsistently, these concerns lead to:
+
+- duplicated logic  
+- reduced readability  
+- harder-to-maintain systems  
+
+Core.ToolKit provides a structured and consistent approach to handling these concerns while keeping business logic clean and focused.
+
+---
+
+## 📦 Included Components
+
+
+### GuardKit
 
 A fluent guard and continuation framework for handling defensive logic.
 
