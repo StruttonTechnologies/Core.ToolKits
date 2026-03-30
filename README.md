@@ -1,151 +1,66 @@
-﻿# Core Capability Tool Kits
+﻿### GuardKit
 
-The **Core Capability Tool Kits** solution contains foundational utilities and shared components used across Strutton Technologies core capability libraries.
+A fluent guard and continuation framework for handling defensive logic.
 
-These toolkits are intentionally separated into their own solution to avoid dependency cycles and to allow foundational components to evolve independently from higher-level modules such as Identity, Domain services, or Application orchestration layers.
+Instead of writing:
 
----
+```csharp
+if (user == null)
+{
+    return Array.Empty<LoginInfo>();
+}
 
-## Purpose
+You can write:
 
-Toolkits provide **small, focused building blocks** that can be used by nearly any project type including:
-
-- Domain libraries
-- Application services
-- Identity systems
-- Infrastructure layers
-- Web applications
-- Console tools
-- Background services
-
-They are intentionally lightweight and dependency-minimal.
+```csharp
+return await Guard.IsNull(user)
+    .ReturnEmptyArray(u => _userManager.GetLoginsAsync(u));
 
 ---
 
-## Design Principles
+### Common Usage Patterns
 
-### Focused Responsibility
+#### Returning a default or empty result
 
-Each toolkit should provide functionality in a clearly defined area.
-
-Examples include:
-
-- Guards
-- Extensions
-- Helpers
-- Value utilities
+```csharp
+return Guard.IsNull(user)
+    .Return(Array.Empty<LoginInfo>(), u => u.Logins);
 
 ---
 
-### Minimal Dependencies
+#### Returning an error / throwing an exception
 
-Toolkits should depend only on:
+```csharp
+var user = Guard.IsNull(user)
+    .ReturnOrThrow(() => new UserNotFoundException());
 
-- .NET base libraries
-- other toolkit libraries when necessary
+Or with a continuation:
 
-They should **not depend on higher level modules**.
-
----
-
-### Reusable Across All Layers
-
-Toolkits must remain usable from:
-
-- Domain
-- Application
-- Infrastructure
-- API
-- UI
+```csharp
+return await Guard.IsNull(user)
+    .ReturnOrThrow(
+        () => new UserNotFoundException(),
+        u => _userManager.GetLoginsAsync(u));
 
 ---
 
-### No Business Logic
+#### Using selectors (checking nested values)
 
-Toolkits should not contain application-specific or domain-specific logic.
-
-They exist only to provide **general purpose functionality**.
-
----
-
-## Why Toolkits Are a Separate Solution
-
-The Core Capability Tool Kits are intentionally placed in a **separate solution** from other core libraries.
-
-This avoids the classic dependency problem:
-
-Toolkit → Identity → CoreCapabilities → Toolkit
-
-Separating the solutions allows toolkit libraries to be compiled, versioned, and published independently.
-
-Higher level modules may depend on the toolkits, but toolkits never depend on higher level modules.
+```csharp
+return await Guard.IsNullOrWhiteSpace(user, u => u.Email)
+    .ReturnEmptyArray(u => _userManager.GetLoginsAsync(u));
 
 ---
 
-## Current Toolkit Projects
+### Why this matters
 
-Project | Purpose
---- | ---
-Guards | Fluent guard evaluation and continuation behaviors
+GuardKit separates:
 
----
+- evaluation → what is being checked  
+- continuation → what happens next  
 
-## Guards Toolkit
+This results in:
 
-The **Guards toolkit** provides a fluent pattern for defensive evaluation and continuation behavior.
-
-Example:
-
-    return await Guard.IsNull(user)
-        .ReturnEmptyArray(u => _userManager.GetLoginsAsync(u));
-
-Or when evaluating object properties safely:
-
-    return await Guard.IsNullOrWhiteSpace(user, u => u.Email)
-        .ReturnEmptyArray(u => _userManager.GetLoginsAsync(u));
-
-This pattern allows developers to clearly express:
-
-Evaluate → Decide → Continue
-
-without writing repetitive defensive code.
-
----
-
-## Future Toolkits
-
-Additional toolkits may be added over time as reusable patterns emerge.
-
-Examples may include:
-
-- Extensions
-- Result utilities
-- Functional helpers
-- Validation helpers
-- Mapping utilities
-
-Each toolkit will remain small, focused, and independently versioned.
-
----
-
-## Relationship to Core Capability Libraries
-
-The toolkit libraries support higher level packages such as:
-
-- CoreCapabilities
-- Identity
-- Application orchestration modules
-
-Toolkits provide the **lowest level shared utilities** used across these packages.
-
----
-
-## Summary
-
-The **Core Capability Tool Kits** solution provides a collection of foundational utilities designed to:
-
-- reduce repetitive code
-- improve readability
-- maintain architectural separation
-- avoid circular dependencies
-- support reuse across the entire platform
+- consistent defensive patterns  
+- reduced branching and duplication  
+- clearer intent in code  
