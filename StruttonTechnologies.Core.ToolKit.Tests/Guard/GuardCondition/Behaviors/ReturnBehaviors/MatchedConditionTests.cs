@@ -1,4 +1,4 @@
-﻿namespace StruttonTechnologies.Core.ToolKit.GuardKit.Tests.Guard.GuardCondition.Behaviors.ReturnBehaviors
+﻿namespace StruttonTechnologies.Core.ToolKit.Tests.Guard.GuardCondition.Behaviors.ReturnBehaviors
 {
     /// <summary>
     /// Contains matched-condition test scenarios for <c>Return</c> and <c>ReturnAsync</c> behaviors.

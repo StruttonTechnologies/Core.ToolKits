@@ -1,4 +1,4 @@
-namespace StruttonTechnologies.Core.ToolKit.Validation.Tests.Validators.Contact
+﻿namespace StruttonTechnologies.Core.ToolKit.Tests.Validation.Validators.Contact
 {
     /// <summary>
     /// Contains test scenarios for <see cref="WhitelistEmailValidator"/>.

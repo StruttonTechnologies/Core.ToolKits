@@ -1,4 +1,4 @@
-﻿namespace StruttonTechnologies.Core.ToolKit.GuardKit.Tests.Guard.Evaluators.Collection
+﻿namespace StruttonTechnologies.Core.ToolKit.Tests.Guard.Evaluators.Collection
 {
     /// <summary>
     /// Contains test scenarios for <c>GuardTest.IsEmpty</c>.

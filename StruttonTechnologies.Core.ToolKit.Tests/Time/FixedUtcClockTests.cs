@@ -1,4 +1,7 @@
-﻿namespace StruttonTechnologies.Core.ToolKit.TestingKit.Tests.Time
+﻿using StruttonTechnologies.Core.ToolKit.Testing.Time;
+using StruttonTechnologies.Core.ToolKits.Time;
+
+namespace StruttonTechnologies.Core.ToolKit.Tests.Time
 {
     public sealed class FixedUtcClockTests
     {

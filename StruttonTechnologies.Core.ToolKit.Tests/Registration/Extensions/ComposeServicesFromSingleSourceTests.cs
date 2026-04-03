@@ -1,7 +1,7 @@
 ﻿using StruttonTechnologies.Core.ToolKit.Registration.Extensions;
-using StruttonTechnologies.Core.ToolKit.Registration.Tests.TestDoubles;
+using StruttonTechnologies.Core.ToolKit.Tests.Registration.TestDoubles;
 
-namespace StruttonTechnologies.Core.ToolKit.Registration.Tests.Extensions
+namespace StruttonTechnologies.Core.ToolKit.Tests.Registration.Extensions
 {
     /// <summary>
     /// Contains test scenarios for composing a single source collection through extension methods.

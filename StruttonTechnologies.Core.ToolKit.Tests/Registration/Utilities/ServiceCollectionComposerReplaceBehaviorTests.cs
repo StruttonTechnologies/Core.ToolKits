@@ -1,6 +1,6 @@
-using StruttonTechnologies.Core.ToolKit.Registration.Tests.TestDoubles;
+﻿using StruttonTechnologies.Core.ToolKit.Tests.Registration.TestDoubles;
 
-namespace StruttonTechnologies.Core.ToolKit.Registration.Tests.Utilities
+namespace StruttonTechnologies.Core.ToolKit.Tests.Registration.Utilities
 {
     /// <summary>
     /// Contains replace-behavior test scenarios for <see cref="ServiceCollectionComposer"/>.

@@ -1,16 +1,17 @@
-using StruttonTechnologies.Core.ToolKits.Exceptions;
+﻿using StruttonTechnologies.Core.ToolKits.Exceptions;
 
-namespace StruttonTechnologies.Core.ToolKits.Tests.Exceptions;
-
-public sealed class ExceptionExtensionsTests
+namespace StruttonTechnologies.Core.ToolKit.Tests.Exception
 {
-    [Fact]
-    public void GetInnermostMessage_ReturnsDeepestMessage()
+    public sealed class ExceptionExtensionsTests
     {
-        var exception = new Exception("outer", new InvalidOperationException("inner"));
+        [Fact]
+        public void GetInnermostMessage_ReturnsDeepestMessage()
+        {
+            System.Exception exception = new global::System.Exception("outer", new InvalidOperationException("inner"));
 
-        var message = exception.GetInnermostMessage();
+            string message = exception.GetInnermostMessage();
 
-        Assert.Equal("inner", message);
+            Assert.Equal("inner", message);
+        }
     }
 }

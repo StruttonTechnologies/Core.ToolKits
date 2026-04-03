@@ -1,4 +1,6 @@
-namespace StruttonTechnologies.Core.ToolKit.Registration.Tests.Models
+﻿using StruttonTechnologies.Core.ToolKit.Registration.Models;
+
+namespace StruttonTechnologies.Core.ToolKit.Tests.Registration.Models
 {
     /// <summary>
     /// Contains test scenarios for <see cref="ServiceCompositionBehavior"/>.

@@ -1,4 +1,4 @@
-namespace StruttonTechnologies.Core.ToolKit.Validation.Tests.Models
+﻿namespace StruttonTechnologies.Core.ToolKit.Tests.Validation.Models
 {
     /// <summary>
     /// Contains test scenarios for <see cref="ValidationResult.Copy"/>.

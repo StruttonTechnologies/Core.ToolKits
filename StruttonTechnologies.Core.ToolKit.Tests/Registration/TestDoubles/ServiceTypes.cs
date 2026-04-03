@@ -1,4 +1,4 @@
-namespace StruttonTechnologies.Core.ToolKit.Registration.Tests.TestDoubles
+﻿namespace StruttonTechnologies.Core.ToolKit.Tests.Registration.TestDoubles
 {
     /// <summary>
     /// Represents a sample service contract for composition tests.

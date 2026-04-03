@@ -1,4 +1,4 @@
-namespace StruttonTechnologies.Core.ToolKit.Validation.Tests.Validators.Composite
+﻿namespace StruttonTechnologies.Core.ToolKit.Tests.Validation.Validators.Composite
 {
     /// <summary>
     /// Contains test scenarios for <see cref="CompositeValidator{T}"/>.

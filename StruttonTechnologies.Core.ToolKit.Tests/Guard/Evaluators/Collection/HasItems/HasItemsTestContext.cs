@@ -1,4 +1,4 @@
-﻿namespace StruttonTechnologies.Core.ToolKit.GuardKit.Tests.Guard.Evaluators.Collection.HasItems
+﻿namespace StruttonTechnologies.Core.ToolKit.Tests.Guard.Evaluators.Collection.HasItems
 {
     /// <summary>
     /// Provides test data specific to <c>GuardTest.HasItems</c>.

@@ -1,4 +1,4 @@
-﻿namespace StruttonTechnologies.Core.ToolKit.TestingKit.Tests.GuardTests.Data
+﻿namespace StruttonTechnologies.Core.ToolKit.Tests.TestingKit.Guard.Data
 {
     public sealed class GuardCollectionTheoryDataTests
     {

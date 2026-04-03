@@ -1,4 +1,4 @@
-﻿namespace StruttonTechnologies.Core.ToolKit.GuardKit.Tests.Guard.Evaluators.String
+﻿namespace StruttonTechnologies.Core.ToolKit.Tests.Guard.Evaluators.String
 {
     /// <summary>
     /// Contains test scenarios for string guard evaluators.

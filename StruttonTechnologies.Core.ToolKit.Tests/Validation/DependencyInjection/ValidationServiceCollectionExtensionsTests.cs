@@ -1,4 +1,4 @@
-﻿namespace StruttonTechnologies.Core.ToolKit.Validation.Tests.DependencyInjection
+﻿namespace StruttonTechnologies.Core.ToolKit.Tests.Validation.DependencyInjection
 {
     /// <summary>
     /// Contains test scenarios for <see cref="ValidationServiceCollectionExtensions"/>.

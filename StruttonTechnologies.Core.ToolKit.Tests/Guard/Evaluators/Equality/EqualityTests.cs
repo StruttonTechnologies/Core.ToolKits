@@ -1,4 +1,4 @@
-﻿namespace StruttonTechnologies.Core.ToolKit.GuardKit.Tests.Guard.Evaluators.Equality
+﻿namespace StruttonTechnologies.Core.ToolKit.Tests.Guard.Evaluators.Equality
 {
     /// <summary>
     /// Contains test scenarios for equality-based guard evaluators.

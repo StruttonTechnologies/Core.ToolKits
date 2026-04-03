@@ -1,4 +1,4 @@
-namespace StruttonTechnologies.Core.ToolKit.Registration.Tests.Utilities
+﻿namespace StruttonTechnologies.Core.ToolKit.Tests.Registration.Utilities
 {
     /// <summary>
     /// Contains guard-clause test scenarios for <see cref="ServiceCollectionComposer"/>.

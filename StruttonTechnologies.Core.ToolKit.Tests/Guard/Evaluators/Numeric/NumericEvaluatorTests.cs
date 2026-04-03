@@ -1,4 +1,4 @@
-﻿namespace StruttonTechnologies.Core.ToolKit.GuardKit.Tests.Guard.Evaluators.Numeric
+﻿namespace StruttonTechnologies.Core.ToolKit.Tests.Guard.Evaluators.Numeric
 {
     /// <summary>
     /// Contains test scenarios for numeric guard evaluators.

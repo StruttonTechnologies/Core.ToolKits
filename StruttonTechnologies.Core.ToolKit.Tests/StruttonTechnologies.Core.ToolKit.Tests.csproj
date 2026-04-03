@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <IsTestProject>true</IsTestProject>
@@ -14,8 +14,14 @@
   
   <ItemGroup>
     <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.GuardKit\StruttonTechnologies.Core.ToolKit.Guardkit.csproj" />
+    <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.Registration\StruttonTechnologies.Core.ToolKit.Registration.csproj" />
     <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.TestingKit\StruttonTechnologies.Core.Toolkit.TestingKit.csproj" />
+    <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.TestingKit.Assertions\StruttonTechnologies.Core.ToolKit.TestingKit.Assertions.csproj" />
+    <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.TestingKit.AspNetCore\StruttonTechnologies.Core.ToolKit.TestingKit.AspNetCore.csproj" />
+    <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.TestingKit.EntityFramework\StruttonTechnologies.Core.ToolKit.TestingKit.EntityFramework.csproj" />
+    <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.TestingKit.Logging\StruttonTechnologies.Core.ToolKit.TestingKit.Logging.csproj" />
     <ProjectReference Include="..\StruttonTechnologies.Core.ToolKits.Exceptions\StruttonTechnologies.Core.ToolKits.Exceptions.csproj" />
+    <ProjectReference Include="..\StruttonTechnologies.Core.ToolKits.Time\StruttonTechnologies.Core.ToolKits.Time.csproj" />
     <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.TestingKit.Guard\StruttonTechnologies.Core.ToolKit.TestingKit.Guard.csproj" />
   </ItemGroup>
   

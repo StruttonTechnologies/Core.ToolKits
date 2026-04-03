@@ -1,4 +1,4 @@
-﻿namespace StruttonTechnologies.Core.ToolKit.GuardKit.Tests.Guard.Evaluators.Type
+﻿namespace StruttonTechnologies.Core.ToolKit.Tests.Guard.Evaluators.Type
 {
     /// <summary>
     /// Contains test scenarios for type guard evaluators.

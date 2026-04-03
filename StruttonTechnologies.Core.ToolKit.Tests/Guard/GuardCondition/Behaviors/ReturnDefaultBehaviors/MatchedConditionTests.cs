@@ -1,4 +1,4 @@
-﻿namespace StruttonTechnologies.Core.ToolKit.GuardKit.Tests.Guard.GuardCondition.Behaviors.ReturnDefaultBehaviors
+﻿namespace StruttonTechnologies.Core.ToolKit.Tests.Guard.GuardCondition.Behaviors.ReturnDefaultBehaviors
 {
     /// <summary>
     /// Contains matched-condition test scenarios for <c>ReturnDefault</c> behaviors.

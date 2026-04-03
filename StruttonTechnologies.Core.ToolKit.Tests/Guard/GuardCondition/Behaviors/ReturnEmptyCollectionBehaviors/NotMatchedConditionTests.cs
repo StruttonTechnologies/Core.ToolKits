@@ -1,4 +1,4 @@
-﻿namespace StruttonTechnologies.Core.ToolKit.GuardKit.Tests.Guard.GuardCondition.Behaviors.ReturnEmptyCollectionBehaviors
+﻿namespace StruttonTechnologies.Core.ToolKit.Tests.Guard.GuardCondition.Behaviors.ReturnEmptyCollectionBehaviors
 {
     /// <summary>
     /// Contains not-matched-condition test scenarios for empty collection return behaviors.

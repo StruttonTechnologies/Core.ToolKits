@@ -1,4 +1,4 @@
-namespace StruttonTechnologies.Core.ToolKit.Validation.Tests.Extensions
+﻿namespace StruttonTechnologies.Core.ToolKit.Tests.Validation.Extensions
 {
     /// <summary>
     /// Contains guard clause test scenarios for <see cref="ValidationResultExtensions"/>.

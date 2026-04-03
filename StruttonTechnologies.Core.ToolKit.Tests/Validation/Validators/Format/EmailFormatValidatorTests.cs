@@ -1,4 +1,4 @@
-namespace StruttonTechnologies.Core.ToolKit.Validation.Tests.Validators.Format
+﻿namespace StruttonTechnologies.Core.ToolKit.Tests.Validation.Validators.Format
 {
     /// <summary>
     /// Contains test scenarios for <see cref="EmailFormatValidator"/>.

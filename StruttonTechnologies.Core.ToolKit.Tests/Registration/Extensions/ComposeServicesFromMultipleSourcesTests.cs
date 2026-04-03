@@ -2,7 +2,7 @@
 
 using StruttonTechnologies.Core.ToolKit.Registration.Extensions;
 
-namespace StruttonTechnologies.Core.ToolKit.Registration.Tests.Extensions
+namespace StruttonTechnologies.Core.ToolKit.Tests.Registration.Extensions
 {
     /// <summary>
     /// Contains test scenarios for composing services from multiple source collections.

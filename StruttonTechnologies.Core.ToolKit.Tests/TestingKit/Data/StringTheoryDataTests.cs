@@ -1,4 +1,4 @@
-﻿namespace StruttonTechnologies.Core.ToolKit.TestingKit.Tests.Data
+﻿namespace StruttonTechnologies.Core.ToolKit.Tests.TestingKit.Data
 {
     [ExcludeFromCodeCoverage]
     public sealed class StringTheoryDataTests

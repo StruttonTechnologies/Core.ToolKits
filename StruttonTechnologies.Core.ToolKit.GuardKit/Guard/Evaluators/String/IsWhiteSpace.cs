@@ -55,8 +55,4 @@
             return new GuardCondition<T>(value, selectedValue is not null && selectedValue.Length > 0 && string.IsNullOrWhiteSpace(selectedValue));
         }
     }
-
-    internal class IsWhiteSpace
-    {
-    }
 }

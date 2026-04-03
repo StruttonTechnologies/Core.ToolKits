@@ -1,4 +1,4 @@
-﻿namespace StruttonTechnologies.Core.ToolKit.GuardKit.Tests.Guard.GuardCondition.Behaviors.DoBehaviors
+﻿namespace StruttonTechnologies.Core.ToolKit.Tests.Guard.GuardCondition.Behaviors.DoBehaviors
 {
     /// <summary>
     /// Contains argument validation test scenarios for <c>Do</c> and <c>DoAsync</c> behaviors.

@@ -1,4 +1,4 @@
-namespace StruttonTechnologies.Core.ToolKit.Validation.Tests.Validators.Common
+﻿namespace StruttonTechnologies.Core.ToolKit.Tests.Validation.Validators.Common
 {
     /// <summary>
     /// Contains behavior test scenarios for <see cref="RegexValidator"/>.

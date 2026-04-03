@@ -1,4 +1,4 @@
-﻿namespace StruttonTechnologies.Core.ToolKit.GuardKit.Tests.Guard.GuardCondition.Behaviors.ReturnValueOrNullBehaviors
+﻿namespace StruttonTechnologies.Core.ToolKit.Tests.Guard.GuardCondition.Behaviors.ReturnValueOrNullBehaviors
 {
     /// <summary>
     /// Contains not-matched-condition test scenarios for <c>ReturnValueOrNull</c> behaviors.
