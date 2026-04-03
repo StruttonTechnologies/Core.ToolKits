@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <PackageId>StruttonTechnologies.Core.ToolKits.Time</PackageId>
+    <Title>Strutton Technologies Time Toolkit</Title>
+    <Description>Portable time abstractions and date/time helpers for reusable .NET solutions.</Description>
+    <PackageTags>time;clock;date;timezone;toolkit;struttontechnologies</PackageTags>
+  </PropertyGroup>
+</Project>

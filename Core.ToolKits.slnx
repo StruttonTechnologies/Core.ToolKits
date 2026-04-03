@@ -12,15 +12,14 @@
     <Project Path="StruttonTechnologies.Core.ToolKit.GuardKit/StruttonTechnologies.Core.ToolKit.Guardkit.csproj" />
     <Project Path="StruttonTechnologies.Core.ToolKit.Registration/StruttonTechnologies.Core.ToolKit.Registration.csproj" />
     <Project Path="StruttonTechnologies.Core.ToolKit.Validation/StruttonTechnologies.Core.ToolKit.Validation.csproj" />
+    <Project Path="StruttonTechnologies.Core.ToolKits.Exceptions/StruttonTechnologies.Core.ToolKits.Exceptions.csproj" />
+    <Project Path="StruttonTechnologies.Core.ToolKits.Time/StruttonTechnologies.Core.ToolKits.Time.csproj" />
   </Folder>
   <Folder Name="/Source/Testing/">
     <Project Path="StruttonTechnologies.Core.ToolKit.TestingKit.Guard/StruttonTechnologies.Core.ToolKit.TestingKit.Guard.csproj" Id="f1c771a2-46e6-4526-ab56-54f9b3df795f" />
     <Project Path="StruttonTechnologies.Core.Toolkit.TestingKit/StruttonTechnologies.Core.Toolkit.TestingKit.csproj" Id="d364fb88-ac0b-450d-a9f6-382556fe283b" />
   </Folder>
   <Folder Name="/Tests/">
-    <Project Path="StruttonTechnologies.Core.ToolKit.GuardKit.Tests/StruttonTechnologies.Core.ToolKit.GuardKit.Tests.csproj" Id="405180d5-26db-46d1-9768-4989f29798cf" />
-    <Project Path="StruttonTechnologies.Core.ToolKit.Registration.Tests/StruttonTechnologies.Core.ToolKit.Registration.Tests.csproj" />
-    <Project Path="StruttonTechnologies.Core.ToolKit.TestingKit.Tests/StruttonTechnologies.Core.ToolKit.TestingKit.Tests.csproj" />
-    <Project Path="StruttonTechnologies.Core.ToolKit.Validation.Tests/StruttonTechnologies.Core.ToolKit.Validation.Tests.csproj" Id="7049a87e-f8a1-4672-a8bb-e6e7b45e2c4e" />
+    <Project Path="StruttonTechnologies.Core.ToolKit.Tests/StruttonTechnologies.Core.ToolKit.Tests.csproj" Id="0d650d60-c21b-46a1-9aa3-4f1091377caa" />
   </Folder>
 </Solution>

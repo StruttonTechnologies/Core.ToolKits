@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <PackageId>StruttonTechnologies.Core.ToolKits.Exceptions</PackageId>
+    <Title>Strutton Technologies Exception Toolkit</Title>
+    <Description>Portable exception types and exception utility helpers for reusable .NET solutions.</Description>
+    <PackageTags>exceptions;toolkit;error-handling;struttontechnologies</PackageTags>
+  </PropertyGroup>
+</Project>
