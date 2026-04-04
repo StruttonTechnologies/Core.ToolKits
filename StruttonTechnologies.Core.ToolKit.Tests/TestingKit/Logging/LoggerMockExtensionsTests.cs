@@ -6,6 +6,7 @@ using StruttonTechnologies.Core.ToolKit.Testing.Logging;
 namespace StruttonTechnologies.Core.ToolKit.Tests.TestingKit.Logging
 {
     [ExcludeFromCodeCoverage]
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1848:Use the LoggerMessage delegates", Justification = "Test code - performance is not critical")]
     public class LoggerMockExtensionsTests
     {
         [Fact]
@@ -153,7 +154,7 @@ namespace StruttonTechnologies.Core.ToolKit.Tests.TestingKit.Logging
             loggerMock.VerifyLog(LogLevel.Information, "test message", Times.AtLeastOnce());
         }
 
-        private class TestClass
+        public sealed class TestClass
         {
         }
     }

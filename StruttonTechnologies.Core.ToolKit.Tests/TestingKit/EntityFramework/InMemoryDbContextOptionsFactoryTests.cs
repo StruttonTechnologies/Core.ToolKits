@@ -102,7 +102,7 @@ namespace StruttonTechnologies.Core.ToolKit.Tests.TestingKit.EntityFramework
             Assert.Contains("InMemory", providerName);
         }
 
-        private class TestDbContext : DbContext
+        private sealed class TestDbContext : DbContext
         {
             public TestDbContext(DbContextOptions<TestDbContext> options) : base(options)
             {
@@ -111,7 +111,7 @@ namespace StruttonTechnologies.Core.ToolKit.Tests.TestingKit.EntityFramework
             public DbSet<TestEntity> TestEntities { get; set; } = null!;
         }
 
-        private class TestEntity
+        private sealed class TestEntity
         {
             public int Id { get; set; }
             public string Name { get; set; } = string.Empty;

@@ -26,7 +26,7 @@ namespace StruttonTechnologies.Core.ToolKit.Tests.TestingKit.Utilities
         [Fact]
         public async Task WaitAsync_Generic_ShouldThrowTaskCanceledException_WhenTimeoutExpires()
         {
-            var task = Task.Delay(TimeSpan.FromSeconds(10)).ContinueWith(_ => 42);
+            var task = Task.Delay(TimeSpan.FromSeconds(10), TestContext.Current.CancellationToken).ContinueWith(_ => 42);
 
             await Assert.ThrowsAsync<TaskCanceledException>(async () =>
                 await TaskTestHelper.WaitAsync(task, TimeSpan.FromMilliseconds(100)));
@@ -52,7 +52,7 @@ namespace StruttonTechnologies.Core.ToolKit.Tests.TestingKit.Utilities
         [Fact]
         public async Task WaitAsync_NonGeneric_ShouldThrowTaskCanceledException_WhenTimeoutExpires()
         {
-            var task = Task.Delay(TimeSpan.FromSeconds(10));
+            var task = Task.Delay(TimeSpan.FromSeconds(10), TestContext.Current.CancellationToken);
 
             await Assert.ThrowsAsync<TaskCanceledException>(async () =>
                 await TaskTestHelper.WaitAsync(task, TimeSpan.FromMilliseconds(100)));

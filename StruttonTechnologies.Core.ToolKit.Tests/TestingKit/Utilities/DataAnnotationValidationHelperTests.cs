@@ -85,7 +85,7 @@ namespace StruttonTechnologies.Core.ToolKit.Tests.TestingKit.Utilities
             Assert.Empty(results);
         }
 
-        private class ValidTestObject
+        private sealed class ValidTestObject
         {
             [Required]
             public string Name { get; set; } = string.Empty;
@@ -94,7 +94,7 @@ namespace StruttonTechnologies.Core.ToolKit.Tests.TestingKit.Utilities
             public int Age { get; set; }
         }
 
-        private class ParentObject
+        private sealed class ParentObject
         {
             [Required]
             public string Name { get; set; } = string.Empty;
@@ -102,13 +102,13 @@ namespace StruttonTechnologies.Core.ToolKit.Tests.TestingKit.Utilities
             public ChildObject? Child { get; set; }
         }
 
-        private class ChildObject
+        private sealed class ChildObject
         {
             [EmailAddress]
             public string Email { get; set; } = string.Empty;
         }
 
-        private class CircularObject
+        private sealed class CircularObject
         {
             [Required]
             public string Name { get; set; } = string.Empty;

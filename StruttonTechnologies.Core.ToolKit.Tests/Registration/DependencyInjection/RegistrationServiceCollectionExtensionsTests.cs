@@ -146,7 +146,7 @@ namespace StruttonTechnologies.Core.ToolKit.Tests.Registration.DependencyInjecti
         {
         }
 
-        private class TestService : ITestService
+        private sealed class TestService : ITestService
         {
         }
     }
