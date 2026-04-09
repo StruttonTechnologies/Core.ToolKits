@@ -12,17 +12,8 @@
     <VersionSuffix>alpha</VersionSuffix>
 
     <!-- Packaging -->
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <IsPackable>true</IsPackable>
-
-    <!-- Repository metadata -->
-    <RepositoryUrl>https://github.com/StruttonTechnologies/CoreCapabilities</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Authors>Strutton Technologies</Authors>
-    <Company>Strutton Technologies</Company>
+    
   </PropertyGroup>
 
   <ItemGroup>

@@ -9,9 +9,9 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<LangVersion>preview</LangVersion>
 
-		<!-- Repository metadata -->
-		<RepositoryUrl>https://github.com/StruttonTechnologies/CoreCapabilities</RepositoryUrl>
-		<RepositoryType>git</RepositoryType>
+    <!-- Repository metadata -->
+    <RepositoryUrl>https://github.com/StruttonTechnologies/StruttonTechnologies.Core.ToolKit</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 
 		<!-- Build quality settings -->

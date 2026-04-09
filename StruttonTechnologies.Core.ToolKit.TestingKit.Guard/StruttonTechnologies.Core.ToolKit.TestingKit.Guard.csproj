@@ -7,22 +7,13 @@
     <Description>Reusable guard testing assertions and helpers for StruttonTechnologies.Core.ToolKit.GuardKit.</Description>
     <PackageTags>testing,toolkit,guard,guards,assertions,xunit,strutton,StruttonTechnologies</PackageTags>
 
+
     <!-- Versioning -->
     <VersionPrefix>1.0.0</VersionPrefix>
     <VersionSuffix>alpha</VersionSuffix>
 
     <!-- Packaging -->
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <IsPackable>true</IsPackable>
-
-    <!-- Repository metadata -->
-    <RepositoryUrl>https://github.com/StruttonTechnologies/StruttonTechnologies.Core.ToolKit.TestingKit.Guard</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Authors>Strutton Technologies</Authors>
-    <Company>Strutton Technologies</Company>
   </PropertyGroup>
 
   <!-- Dependencies -->

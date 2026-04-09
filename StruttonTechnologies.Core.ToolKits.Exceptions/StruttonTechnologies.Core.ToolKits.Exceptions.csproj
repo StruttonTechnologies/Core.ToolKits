@@ -1,8 +1,16 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Package identity -->
   <PropertyGroup>
     <PackageId>StruttonTechnologies.Core.ToolKits.Exceptions</PackageId>
-    <Title>Strutton Technologies Exception Toolkit</Title>
-    <Description>Portable exception types and exception utility helpers for reusable .NET solutions.</Description>
-    <PackageTags>exceptions;toolkit;error-handling;struttontechnologies</PackageTags>
+    <Title>StruttonTechnologies Core ToolKits Exceptions</Title>
+    <Description>Reusable exception types and exception handling utilities for StruttonTechnologies applications.</Description>
+    <PackageTags>exceptions,errorhandling,errors,toolkit,core,strutton,StruttonTechnologies</PackageTags>
+
+    <!-- Versioning -->
+    <VersionPrefix>1.0.0</VersionPrefix>
+    <VersionSuffix>alpha</VersionSuffix>
+
+    <!-- Packaging -->
+    <IsPackable>true</IsPackable>
   </PropertyGroup>
 </Project>

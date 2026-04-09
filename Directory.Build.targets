@@ -1,8 +1,11 @@
-<Project>
+﻿<Project>
 	<!-- NuGet packaging configuration - only for packable projects -->
 	<PropertyGroup Condition="'$(IsPackable)' != 'false'">
-		<PackageOutputPath>G:\source\Packages</PackageOutputPath>
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Authors>Strutton Technologies</Authors>
+    <Company>Strutton Technologies</Company>
+    <PackageOutputPath>G:\source\Packages</PackageOutputPath>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
