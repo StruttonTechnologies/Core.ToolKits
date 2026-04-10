@@ -1,0 +1,47 @@
+name: PR Validation
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Install PowerShell
+        uses: PowerShell/PowerShell@v2
+        with:
+          version: '7.4.x'
+
+      - name: Restore dependencies
+        run: pwsh ./stp restore
+
+      - name: Verify formatting
+        run: pwsh ./stp format -Verify
+
+      - name: Build solution
+        run: pwsh ./stp build -Configuration Release
+
+      - name: Run tests
+        run: pwsh ./stp test -NoBuild
+
+      - name: Run coverage
+        run: pwsh ./stp coverage
+
+      - name: Analyze coverage
+        run: pwsh ./stp analyze-coverage -Markdown > coverage-summary.md
+
+      - name: Upload coverage summary
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-summary
+          path: coverage-summary.md

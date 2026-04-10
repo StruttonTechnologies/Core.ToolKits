@@ -1,10 +1,24 @@
-﻿# Git Copilot Guidelines
+﻿````md
+# GitHub Copilot Guidelines  
+Strutton Technologies — Unified Development Standards
 
-This repository contains development guidelines used to help guide GitHub Copilot when generating code for repositories within the Strutton Technologies ecosystem.
+These guidelines define how GitHub Copilot should generate code, tests, documentation, and architectural patterns within repositories in the Strutton Technologies ecosystem.
 
-These guidelines are intentionally simple and explicit so that Copilot can generate code that aligns with the preferred development patterns used in these projects.
+They combine:
 
-As new preferences or patterns are identified, they can be added to this document and incorporated into project-level Copilot instruction files.
+- the original Strutton Technologies Copilot rules  
+- expanded architectural, testing, and workflow guidance  
+- modern C# expectations  
+- STP workflow integration  
+- explicit “do” and “do not” rules  
+
+These instructions ensure Copilot produces code that is:
+
+- consistent  
+- maintainable  
+- aligned with your architecture  
+- easy for developers to understand  
+- compatible with STP and .NET 10  
 
 ---
 
@@ -18,14 +32,13 @@ The purpose of these guidelines is to ensure that generated code:
 - aligns with established architectural patterns
 - remains readable and maintainable
 - integrates well with existing solutions
+- supports long-term evolution of the codebase
 
 ---
 
 # Core Coding Preferences
 
-The following rules describe the preferred coding style for generated code.
-
-These rules should be followed whenever possible when generating C# code.
+These rules describe the preferred coding style for generated C# code.
 
 ## Namespace Style
 
@@ -89,23 +102,26 @@ Avoid overly clever implementations. Favor straightforward solutions that other 
 
 ---
 
-# Expanding These Guidelines
+# Architecture & Layering
 
-This document will evolve over time as additional development patterns and preferences are identified.
+Copilot must follow these architectural rules:
 
-Future additions may include guidance related to:
+## Clean Layering
 
-- architecture layering
-- repository structure
-- testing expectations
-- naming conventions
-- project organization
+- **Domain/Core** → business logic  
+- **Infrastructure** → persistence, external services  
+- **API** → controllers, endpoints  
+- **Tests** → scenario-based test organization  
 
----
+Do **not** mix responsibilities across layers.
 
----
+## Dependency Injection
 
-## File Organization
+- Use constructor injection  
+- Avoid static service locators  
+- Avoid manually instantiating dependencies inside classes  
+
+## Partial Class Organization
 
 Avoid creating large "mega classes" that contain many unrelated methods.
 
@@ -127,8 +143,6 @@ namespace Example.Project.Guards
 ```
 
 This file acts as the logical root for the class.
-
----
 
 ### Method Organization
 
@@ -170,8 +184,6 @@ namespace Example.Project.Guards
 }
 ```
 
----
-
 ### Namespace Consistency
 
 All partial class files must use the **same namespace** as the parent class.
@@ -180,7 +192,7 @@ Do not create nested or alternate namespaces for method files.
 
 Example:
 
-```
+```csharp
 namespace Example.Project.Guards
 ```
 
@@ -188,9 +200,23 @@ Consistency is important so the compiler correctly merges the partial class defi
 
 ---
 
+# Modern C# Expectations
+
+Copilot should use:
+
+- `var` for local inference  
+- pattern matching  
+- primary constructors when appropriate  
+- collection expressions  
+- async/await everywhere applicable  
+- expression-bodied members when readable  
+- `readonly` fields where possible  
+
+Avoid outdated patterns.
+
 ---
 
-## Test Organization
+# Test Organization & Guidelines
 
 Unit tests should be organized to keep tests easy to navigate and maintain.
 
@@ -198,9 +224,7 @@ Avoid creating a single large test class containing many unrelated tests.
 
 Instead, organize tests by **class under test** and group related scenarios together.
 
----
-
-### Folder Structure
+## Folder Structure
 
 Create a folder for the class being tested.
 
@@ -213,9 +237,7 @@ GuardTests
 
 This folder contains tests related to the `Guard.AgainstNull` behavior.
 
----
-
-### File Organization
+## File Organization
 
 Within the folder, create **test files grouped by scenario or behavior**.
 
@@ -233,9 +255,7 @@ GuardTests
 
 This keeps tests organized without creating excessive numbers of files.
 
----
-
-### Example Test File
+## Example Test File
 
 Example structure for a grouped test file:
 
@@ -260,9 +280,7 @@ public class NullValueTests
 }
 ```
 
----
-
-### Naming Guidelines
+## Naming Guidelines
 
 Test class names should describe the behavior being tested.
 
@@ -278,15 +296,131 @@ Avoid generic names such as:
 - `GuardTests`
 - `TestCases`
 
+## Test Framework & Style
+
+- Use **xUnit**  
+- Prefer **scenario-based test grouping**  
+- Prefer **FluentAssertions** when available:
+
+```csharp
+result.Should().Be(expected);
+```
+
+Avoid mocking domain logic. Mock only external dependencies.
+
 ---
 
-### Goals of This Structure
+# STP Toolkit Integration
 
-This approach helps ensure tests are:
+Copilot should assume developers use the STP commands:
 
-- organized by behavior
-- easy to locate
-- easy to expand
-- easier for AI tools to extend without modifying large files
+- `stp restore`
+- `stp build`
+- `stp test`
+- `stp pack`
+- `stp coverage`
+- `stp analyze-coverage`
 
-Favor **scenario-based groupings** over extremely large test files or one-file-per-test structures.
+Generated instructions or examples should reference these commands when relevant, instead of raw `dotnet` commands, unless explicitly required.
+
+---
+
+# NuGet Packaging Expectations
+
+Generated library code must be packable:
+
+- Public APIs documented  
+- XML comments encouraged  
+- No internal-only “dead code”  
+- No preview or experimental APIs  
+
+Versioning is controlled by tags (e.g., `v1.2.3`).  
+Copilot should **not** guess or hard-code version numbers.
+
+---
+
+# Documentation Guidelines
+
+- Use Markdown  
+- Include examples where helpful  
+- Keep explanations concise  
+- Prefer tables for structured data  
+
+---
+
+# Copilot Behavior Rules
+
+## Do NOT generate:
+
+- File-scoped namespaces  
+- Static service locators  
+- Preview or experimental .NET APIs  
+- Large “mega classes”  
+- Unnecessary `#region` blocks  
+- Deprecated patterns  
+- Overly clever or cryptic code  
+
+## DO generate:
+
+- Clean, maintainable, modern C#  
+- Small, focused methods  
+- Partial class organization  
+- Scenario-based tests  
+- XML docs for public APIs  
+- DI-friendly patterns  
+
+## When unsure, Copilot should:
+
+- Prefer clarity over cleverness  
+- Prefer maintainability over brevity  
+- Prefer explicitness over magic  
+
+---
+
+# Example File Layout
+
+```
+/src
+  /MyProject
+    MyService.Core.cs
+    MyService.Validation.cs
+    MyService.Mapping.cs
+    MyService.Extensions.cs
+
+/tests
+  /MyProject.Tests
+    MyService
+      CoreBehaviorTests.cs
+      ValidationTests.cs
+      MappingTests.cs
+```
+
+---
+
+# Expanding These Guidelines
+
+This document will evolve over time as additional development patterns and preferences are identified.
+
+Future additions may include guidance related to:
+
+- architecture layering (more detailed rules)
+- repository structure
+- additional testing expectations
+- naming conventions
+- project organization
+- specific patterns for APIs, handlers, and services
+
+---
+
+# Final Notes
+
+These instructions apply to all Copilot-generated content in this repository.
+
+Copilot should always prioritize:
+
+- Maintainability  
+- Clarity  
+- Consistency  
+- Testability  
+- Alignment with STP workflows  
+````

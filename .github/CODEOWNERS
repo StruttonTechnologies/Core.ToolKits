@@ -1,0 +1,22 @@
+# CODEOWNERS for Strutton Technologies Repositories
+# This file defines ownership for code review and change approval.
+
+# Global owners — default reviewers for all files
+*       @ShawnStrutton
+
+# Core Toolkit ownership
+/Core-Capabilities/Core.ToolKits/   @ShawnStrutton
+
+# GitHub configuration ownership
+/.github/                           @ShawnStrutton
+
+# PowerShell scripts (STP commands)
+/*.ps1                              @ShawnStrutton
+/stp.ps1                            @ShawnStrutton
+
+# Documentation
+/docs/                              @ShawnStrutton
+*.md                                @ShawnStrutton
+
+# Tests
+/tests/                             @ShawnStrutton
