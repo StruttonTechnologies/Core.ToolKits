@@ -1,61 +1,62 @@
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Runtime.CompilerServices;
 
-namespace StruttonTechnologies.Core.ToolKit.Testing.Utilities;
-
-/// <summary>
-/// Validates objects using data annotations, including nested complex objects.
-/// </summary>
-public static class DataAnnotationValidationHelper
+namespace StruttonTechnologies.Core.ToolKit.Testing.Utilities
 {
-    public static IReadOnlyList<ValidationResult> ValidateObject(object instance)
+    /// <summary>
+    /// Validates objects using data annotations, including nested complex objects.
+    /// </summary>
+    public static class DataAnnotationValidationHelper
     {
-        ArgumentNullException.ThrowIfNull(instance);
-
-        List<ValidationResult> results = [];
-        ValidateObjectGraph(instance, results, new HashSet<object>(ReferenceEqualityComparer.Instance));
-        return results;
-    }
-
-    private static void ValidateObjectGraph(
-        object instance,
-        ICollection<ValidationResult> results,
-        ISet<object> visited)
-    {
-        if (!visited.Add(instance))
+        public static IReadOnlyList<ValidationResult> ValidateObject(object instance)
         {
-            return;
+            ArgumentNullException.ThrowIfNull(instance);
+
+            List<ValidationResult> results = [];
+            ValidateObjectGraph(instance, results, new HashSet<object>(ReferenceEqualityComparer.Instance));
+            return results;
         }
 
-        Validator.TryValidateObject(
-            instance,
-            new ValidationContext(instance),
-            results,
-            validateAllProperties: true);
-
-        foreach (var property in instance.GetType().GetProperties())
+        private static void ValidateObjectGraph(
+            object instance,
+            ICollection<ValidationResult> results,
+            ISet<object> visited)
         {
-            if (property.PropertyType == typeof(string) || property.PropertyType.IsValueType)
+            if (!visited.Add(instance))
             {
-                continue;
+                return;
             }
 
-            object? value = property.GetValue(instance);
-            if (value is null)
-            {
-                continue;
-            }
+            Validator.TryValidateObject(
+                instance,
+                new ValidationContext(instance),
+                results,
+                validateAllProperties: true);
 
-            ValidateObjectGraph(value, results, visited);
+            foreach (var property in instance.GetType().GetProperties())
+            {
+                if (property.PropertyType == typeof(string) || property.PropertyType.IsValueType)
+                {
+                    continue;
+                }
+
+                object? value = property.GetValue(instance);
+                if (value is null)
+                {
+                    continue;
+                }
+
+                ValidateObjectGraph(value, results, visited);
+            }
         }
-    }
 
-    private sealed class ReferenceEqualityComparer : IEqualityComparer<object>
-    {
-        public static ReferenceEqualityComparer Instance { get; } = new();
+        private sealed class ReferenceEqualityComparer : IEqualityComparer<object>
+        {
+            public static ReferenceEqualityComparer Instance { get; } = new();
 
-        public new bool Equals(object? x, object? y) => ReferenceEquals(x, y);
+            public new bool Equals(object? x, object? y) => ReferenceEquals(x, y);
 
-        public int GetHashCode(object obj) => RuntimeHelpers.GetHashCode(obj);
+            public int GetHashCode(object obj) => RuntimeHelpers.GetHashCode(obj);
+        }
     }
 }

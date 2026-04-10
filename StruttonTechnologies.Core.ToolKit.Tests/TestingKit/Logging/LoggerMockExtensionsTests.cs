@@ -1,7 +1,10 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+
 using Microsoft.Extensions.Logging;
+
 using Moq;
-using StruttonTechnologies.Core.ToolKit.Testing.Logging;
+
+using StruttonTechnologies.Core.ToolKit.TestingKit.Logging.Logging;
 
 namespace StruttonTechnologies.Core.ToolKit.Tests.TestingKit.Logging
 {

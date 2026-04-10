@@ -244,3 +244,7 @@ dotnedotnet_diagnostic.CA1861.severity = nonetr
 # Guard namespace intentionally fixed regardless of folder layout
 [**/Guards/Guard.cs]
 dotnet_diagnostic.IDE0130.severity = none
+
+# Suppress CA1873 for TestingKit projects
+[**/StruttonTechnologies.Core.ToolKit.TestingKit*/**.cs]
+dotnet_diagnostic.CA1873.severity = none

@@ -1,19 +1,20 @@
-using StruttonTechnologies.Core.ToolKits.Time.Models;
+﻿using StruttonTechnologies.Core.ToolKits.Time.Models;
 
-namespace StruttonTechnologies.Core.ToolKits.Tests.Time;
-
-public sealed class DateRangeTests
+namespace StruttonTechnologies.Core.ToolKits.Tests.Time
 {
-    [Fact]
-    public void Intersect_ReturnsExpectedOverlap()
+    public sealed class DateRangeTests
     {
-        var first = new DateRange(new DateTime(2026, 1, 1), new DateTime(2026, 1, 10));
-        var second = new DateRange(new DateTime(2026, 1, 5), new DateTime(2026, 1, 15));
+        [Fact]
+        public void Intersect_ReturnsExpectedOverlap()
+        {
+            var first = new DateRange(new DateTime(2026, 1, 1), new DateTime(2026, 1, 10));
+            var second = new DateRange(new DateTime(2026, 1, 5), new DateTime(2026, 1, 15));
 
-        var overlap = first.Intersect(second);
+            var overlap = first.Intersect(second);
 
-        Assert.NotNull(overlap);
-        Assert.Equal(new DateTime(2026, 1, 5), overlap.Value.Start);
-        Assert.Equal(new DateTime(2026, 1, 10), overlap.Value.End);
+            Assert.NotNull(overlap);
+            Assert.Equal(new DateTime(2026, 1, 5), overlap.Value.Start);
+            Assert.Equal(new DateTime(2026, 1, 10), overlap.Value.End);
+        }
     }
 }

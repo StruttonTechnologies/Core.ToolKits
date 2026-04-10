@@ -1,41 +1,77 @@
-﻿# StruttonTechnologies.Core.ToolKit.Logging
+# StruttonTechnologies.Core.ToolKit.Logging
 
-Shared logging conventions, categories, scopes, event ID guidance, and reusable source-generated log message helpers.
+Shared logging conventions, structured scope helpers, correlation support, and source-generated logging messages for StruttonTechnologies applications.
 
-## Included
+## Structure
 
-- `LoggingCategories`
-- `LogScopeKeys`
-- `LoggingEventId`
-- `LoggingEventIds`
-- `LoggerFactoryExtensions`
-- `LoggerExtensions`
-- `LogMessageBuilder`
-- `Startup.StartupGuardLogs`
-- `Diagnostics.RequestDiagnosticLogs`
-- `Validation.ValidationLogs`
+- `Extensions`
+  - `LoggerExtensions`
+  - `LoggerFactoryExtensions`
+- `Helpers`
+  - `LogMessageBuilder`
+  - `LogScopeBuilder`
+- `Services`
+  - `ICorrelationIdAccessor`
+  - `CorrelationIdAccessor`
+  - `LoggingServiceCollectionExtensions`
+- `Utilities`
+  - `LoggingCategories`
+  - `LoggingEventId`
+  - `LoggingEventIds`
+  - `LoggingEventRanges`
+  - `LogScopeKeys`
+- `Startup`
+  - `StartupGuardLogs`
+- `Diagnostics`
+  - `RequestDiagnosticLogs`
+  - `CorrelationDiagnosticLogs`
+  - `ExceptionLogs`
+- `Validation`
+  - `ValidationLogs`
 
-## Intended Usage
+## Features
 
-Use this package to centralize logging infrastructure and common patterns.
+- Shared logger categories
+- Recommended event ID ranges
+- Well-known event IDs for toolkit log messages
+- Reusable structured scope helpers
+- Async-flow correlation ID storage
+- DI registration for correlation support
+- Source-generated logging methods for startup, diagnostics, validation, and exceptions
 
-Keep project-specific log message classes in the owning project unless the message is truly cross-cutting.
-
-## Example
+## Example Registration
 
 ```csharp
-var logger = app.Services
-    .GetRequiredService<ILoggerFactory>()
-    .CreateToolkitLogger(LoggingCategories.StartupValidation);
+builder.Services.AddToolkitLogging();
+```
 
-var connectionStringName = "DefaultConnection";
-var connectionString = app.Configuration.GetConnectionString(connectionStringName);
+## Example Usage
 
-if (string.IsNullOrWhiteSpace(connectionString))
+```csharp
+using StruttonTechnologies.Core.ToolKit.Logging.Diagnostics;
+using StruttonTechnologies.Core.ToolKit.Logging.Extensions;
+using StruttonTechnologies.Core.ToolKit.Logging.Services;
+using StruttonTechnologies.Core.ToolKit.Logging.Utilities;
+
+var logger = loggerFactory.CreateToolkitLogger(LoggingCategories.Diagnostics);
+var correlationId = correlationIdAccessor.GetOrCreate();
+
+using (logger.BeginCorrelationScope(correlationId))
+using (logger.BeginOperationScope("UserLogin"))
 {
-    StartupGuardLogs.MissingConnectionString(logger, connectionStringName);
-    throw new InvalidOperationException($"Critical configuration missing: {connectionStringName}");
-}
+    CorrelationDiagnosticLogs.CorrelationAssigned(logger, correlationId);
+    CorrelationDiagnosticLogs.OperationStarted(logger, "UserLogin");
 
-StartupGuardLogs.ConnectionStringFound(logger, connectionStringName);
+    try
+    {
+        RequestDiagnosticLogs.ProcessingRequest(logger, "LoginCommand");
+        RequestDiagnosticLogs.CompletedRequest(logger, "LoginCommand");
+        CorrelationDiagnosticLogs.OperationCompleted(logger, "UserLogin");
+    }
+    catch (Exception ex)
+    {
+        ExceptionLogs.ExceptionOccurred(logger, "UserLogin", ex);
+        throw;
+    }
+}
 ```
