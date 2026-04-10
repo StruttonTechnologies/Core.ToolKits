@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <!-- Package identity -->
+    <PackageId>StruttonTechnologies.Core.ToolKit.Logging</PackageId>
+    <Title>StruttonTechnologies Core ToolKit Logging</Title>
+    <Description>Shared logging conventions, scopes, categories, and helpers for StruttonTechnologies applications.</Description>
+    <PackageTags>logging,logger,diagnostics,toolkit,core,strutton,StruttonTechnologies</PackageTags>
+
+    <!-- Versioning -->
+    <VersionPrefix>1.0.0</VersionPrefix>
+    <VersionSuffix>alpha</VersionSuffix>
+
+    <!-- Packaging -->
+    <IsPackable>true</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\" />
+  </ItemGroup>
+</Project>
