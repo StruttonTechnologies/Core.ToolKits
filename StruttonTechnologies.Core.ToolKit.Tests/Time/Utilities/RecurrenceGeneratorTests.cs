@@ -1,5 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using StruttonTechnologies.Core.ToolKits.Time.Utilities;
+using StruttonTechnologies.Core.ToolKit.Time.Utilities;
 
 namespace StruttonTechnologies.Core.ToolKit.Tests.Time.Utilities
 {

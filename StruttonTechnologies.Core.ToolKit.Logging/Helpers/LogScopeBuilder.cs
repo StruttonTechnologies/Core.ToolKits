@@ -14,7 +14,7 @@
         {
             ArgumentNullException.ThrowIfNull(values);
 
-            Dictionary<string, object?> dictionary = [with(StringComparer.Ordinal)];
+            Dictionary<string, object?> dictionary = new Dictionary<string, object?>(StringComparer.Ordinal);
             foreach ((string? key, object? value) in values)
             {
                 if (string.IsNullOrWhiteSpace(key))

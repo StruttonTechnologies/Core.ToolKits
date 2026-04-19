@@ -1,6 +1,6 @@
-﻿using StruttonTechnologies.Core.ToolKits.Time.Abstractions;
+﻿using StruttonTechnologies.Core.ToolKit.Time.Abstractions;
 
-namespace StruttonTechnologies.Core.ToolKits.Time.Clocks
+namespace StruttonTechnologies.Core.ToolKit.Time.Clocks
 {
     /// <summary>
     /// Production clock implementation.

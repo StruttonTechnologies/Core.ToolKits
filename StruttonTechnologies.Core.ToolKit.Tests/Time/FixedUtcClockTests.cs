@@ -1,5 +1,5 @@
 ﻿using StruttonTechnologies.Core.ToolKit.Testing.Time;
-using StruttonTechnologies.Core.ToolKits.Time;
+using StruttonTechnologies.Core.ToolKit.Time;
 
 namespace StruttonTechnologies.Core.ToolKit.Tests.Time
 {

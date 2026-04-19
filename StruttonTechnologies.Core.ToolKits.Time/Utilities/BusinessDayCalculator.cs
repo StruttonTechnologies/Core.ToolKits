@@ -1,4 +1,4 @@
-﻿namespace StruttonTechnologies.Core.ToolKits.Time.Utilities
+﻿namespace StruttonTechnologies.Core.ToolKit.Time.Utilities
 {
     /// <summary>
     /// Provides business-day calculations with configurable weekends and holidays.

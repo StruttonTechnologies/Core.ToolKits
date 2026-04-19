@@ -1,4 +1,4 @@
-﻿namespace StruttonTechnologies.Core.ToolKits.Exceptions
+﻿namespace StruttonTechnologies.Core.ToolKit.Exceptions
 {
     /// <summary>
     /// Provides extension helpers for traversing and flattening exception trees.

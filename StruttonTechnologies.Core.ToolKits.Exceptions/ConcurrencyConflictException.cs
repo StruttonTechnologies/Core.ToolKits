@@ -1,4 +1,4 @@
-﻿namespace StruttonTechnologies.Core.ToolKits.Exceptions
+﻿namespace StruttonTechnologies.Core.ToolKit.Exceptions
 {
     /// <summary>
     /// Represents a persistence conflict caused by concurrent changes.

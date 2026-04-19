@@ -1,5 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using StruttonTechnologies.Core.ToolKits.Exceptions;
+using StruttonTechnologies.Core.ToolKit.Exceptions;
 
 namespace StruttonTechnologies.Core.ToolKit.Tests.Exceptions
 {

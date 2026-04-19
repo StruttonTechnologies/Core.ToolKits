@@ -1,4 +1,4 @@
-﻿namespace StruttonTechnologies.Core.ToolKits.Time.Abstractions
+﻿namespace StruttonTechnologies.Core.ToolKit.Time.Abstractions
 {
     /// <summary>
     /// Represents a time source used to make time-dependent code testable.

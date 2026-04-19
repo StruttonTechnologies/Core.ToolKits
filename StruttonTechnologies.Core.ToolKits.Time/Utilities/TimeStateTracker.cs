@@ -1,7 +1,7 @@
-﻿using StruttonTechnologies.Core.ToolKits.Time.Abstractions;
-using StruttonTechnologies.Core.ToolKits.Time.Clocks;
+﻿using StruttonTechnologies.Core.ToolKit.Time.Abstractions;
+using StruttonTechnologies.Core.ToolKit.Time.Clocks;
 
-namespace StruttonTechnologies.Core.ToolKits.Time.Utilities
+namespace StruttonTechnologies.Core.ToolKit.Time.Utilities
 {
     /// <summary>
     /// Tracks state timestamps to support expiry and cooldown logic.

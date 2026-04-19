@@ -20,8 +20,8 @@
     <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.TestingKit.AspNetCore\StruttonTechnologies.Core.ToolKit.TestingKit.AspNetCore.csproj" />
     <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.TestingKit.EntityFramework\StruttonTechnologies.Core.ToolKit.TestingKit.EntityFramework.csproj" />
     <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.TestingKit.Logging\StruttonTechnologies.Core.ToolKit.TestingKit.Logging.csproj" />
-    <ProjectReference Include="..\StruttonTechnologies.Core.ToolKits.Exceptions\StruttonTechnologies.Core.ToolKits.Exceptions.csproj" />
-    <ProjectReference Include="..\StruttonTechnologies.Core.ToolKits.Time\StruttonTechnologies.Core.ToolKits.Time.csproj" />
+    <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.Exceptions\StruttonTechnologies.Core.ToolKit.Exceptions.csproj" />
+    <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.Time\StruttonTechnologies.Core.ToolKit.Time.csproj" />
     <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.TestingKit.Guard\StruttonTechnologies.Core.ToolKit.TestingKit.Guard.csproj" />
   </ItemGroup>
   

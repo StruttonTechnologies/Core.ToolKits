@@ -1,4 +1,4 @@
-﻿namespace StruttonTechnologies.Core.ToolKits.Time.Models
+﻿namespace StruttonTechnologies.Core.ToolKit.Time.Models
 {
     /// <summary>
     /// Represents an inclusive start / exclusive end date range.

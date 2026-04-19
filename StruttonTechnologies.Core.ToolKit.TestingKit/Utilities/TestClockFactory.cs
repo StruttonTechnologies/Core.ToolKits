@@ -1,4 +1,4 @@
-﻿using StruttonTechnologies.Core.ToolKits.Time.Clocks;
+﻿using StruttonTechnologies.Core.ToolKit.Time.Clocks;
 
 namespace StruttonTechnologies.Core.ToolKit.Testing.Utilities
 {

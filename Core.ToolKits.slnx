@@ -14,7 +14,7 @@
     <Project Path="StruttonTechnologies.Core.ToolKit.Logging/StruttonTechnologies.Core.ToolKit.Logging.csproj" />
     <Project Path="StruttonTechnologies.Core.ToolKit.Registration/StruttonTechnologies.Core.ToolKit.Registration.csproj" />
     <Project Path="StruttonTechnologies.Core.ToolKit.Validation/StruttonTechnologies.Core.ToolKit.Validation.csproj" />
-    <Project Path="StruttonTechnologies.Core.ToolKits.Exceptions/StruttonTechnologies.Core.ToolKits.Exceptions.csproj" />
+    <Project Path="StruttonTechnologies.Core.ToolKits.Exceptions/StruttonTechnologies.Core.ToolKit.Exceptions.csproj" />
     <Project Path="StruttonTechnologies.Core.ToolKits.Time/StruttonTechnologies.Core.ToolKits.Time.csproj" />
   </Folder>
   <Folder Name="/Source/Testing/">

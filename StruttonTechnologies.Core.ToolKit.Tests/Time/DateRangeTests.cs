@@ -1,6 +1,6 @@
-﻿using StruttonTechnologies.Core.ToolKits.Time.Models;
+﻿using StruttonTechnologies.Core.ToolKit.Time.Models;
 
-namespace StruttonTechnologies.Core.ToolKits.Tests.Time
+namespace StruttonTechnologies.Core.ToolKit.Tests.Time
 {
     public sealed class DateRangeTests
     {

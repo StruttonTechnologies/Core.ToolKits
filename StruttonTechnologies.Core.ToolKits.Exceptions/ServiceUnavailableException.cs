@@ -1,4 +1,4 @@
-﻿namespace StruttonTechnologies.Core.ToolKits.Exceptions
+﻿namespace StruttonTechnologies.Core.ToolKit.Exceptions
 {
     /// <summary>
     /// Thrown when a dependent service is unavailable.

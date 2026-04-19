@@ -1,4 +1,4 @@
-﻿namespace StruttonTechnologies.Core.ToolKits.Exceptions
+﻿namespace StruttonTechnologies.Core.ToolKit.Exceptions
 {
     /// <summary>
     /// Represents an application-level exception within the Strutton toolkit ecosystem.

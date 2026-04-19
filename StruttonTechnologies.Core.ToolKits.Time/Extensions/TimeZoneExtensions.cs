@@ -1,4 +1,4 @@
-﻿namespace StruttonTechnologies.Core.ToolKits.Time.Extensions
+﻿namespace StruttonTechnologies.Core.ToolKit.Time.Extensions
 {
     public static class TimeZoneExtensions
     {
