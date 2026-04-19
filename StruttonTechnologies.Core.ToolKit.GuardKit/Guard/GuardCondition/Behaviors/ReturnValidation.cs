@@ -1,4 +1,6 @@
-﻿using ValidationResult = StruttonTechnologies.Core.ToolKit.Validation.Models.ValidationResult;
+﻿
+
+using StruttonTechnologies.Core.ToolKit.Validation.Models;
 
 namespace StruttonTechnologies.Core.ToolKit.GuardKit
 {

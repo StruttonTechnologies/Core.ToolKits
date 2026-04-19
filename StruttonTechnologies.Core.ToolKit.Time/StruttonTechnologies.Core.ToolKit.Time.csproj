@@ -1,18 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <IsPackable>false</IsPackable>
-  </PropertyGroup>
+	<!-- Package identity -->
+	<PropertyGroup>
+		<PackageId>StruttonTechnologies.Core.ToolKit.Time</PackageId>
+		<Title>StruttonTechnologies Core ToolKit Time</Title>
+		<Description>Time abstractions and utilities for working with dates, scheduling, and temporal logic in StruttonTechnologies applications.</Description>
+		<PackageTags>time,datetime,clock,scheduling,temporal,toolkit,core,strutton,StruttonTechnologies</PackageTags>
 
-  <ItemGroup>
-    <PackageReference Include="coverlet.collector" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" />
-    <PackageReference Include="xunit.v3" />
-    <PackageReference Include="xunit.runner.visualstudio" />
-  </ItemGroup>
+		<!-- Versioning -->
+		<VersionPrefix>1.0.0</VersionPrefix>
+		<VersionSuffix>alpha</VersionSuffix>
 
-  <ItemGroup>
-    <Using Include="Xunit" />
-  </ItemGroup>
+		<!-- Packaging -->
+		<IsPackable>true</IsPackable>
+	</PropertyGroup>
 
 </Project>

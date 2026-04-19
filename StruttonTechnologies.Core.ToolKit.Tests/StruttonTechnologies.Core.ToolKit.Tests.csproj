@@ -13,19 +13,15 @@
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.GuardKit\StruttonTechnologies.Core.ToolKit.Guardkit.csproj" />
-    <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.Registration\StruttonTechnologies.Core.ToolKit.Registration.csproj" />
-    <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.TestingKit\StruttonTechnologies.Core.Toolkit.TestingKit.csproj" />
-    <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.TestingKit.Assertions\StruttonTechnologies.Core.ToolKit.TestingKit.Assertions.csproj" />
-    <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.TestingKit.AspNetCore\StruttonTechnologies.Core.ToolKit.TestingKit.AspNetCore.csproj" />
-    <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.TestingKit.EntityFramework\StruttonTechnologies.Core.ToolKit.TestingKit.EntityFramework.csproj" />
-    <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.TestingKit.Logging\StruttonTechnologies.Core.ToolKit.TestingKit.Logging.csproj" />
-    <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.Exceptions\StruttonTechnologies.Core.ToolKit.Exceptions.csproj" />
-    <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.Time\StruttonTechnologies.Core.ToolKit.Time.csproj" />
-    <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.TestingKit.Guard\StruttonTechnologies.Core.ToolKit.TestingKit.Guard.csproj" />
+    <Folder Include="Guard\GuardCondition\Behaviors\ValidationBehaviors\" />
   </ItemGroup>
   
   <ItemGroup>
-    <Folder Include="Guard\GuardCondition\Behaviors\ValidationBehaviors\" />
+    <ProjectReference Include="..\StruttonTechnologies.Core.Toolkit.Exceptions\StruttonTechnologies.Core.ToolKit.Exceptions.csproj" />
+    <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.GuardKit\StruttonTechnologies.Core.ToolKit.Guardkit.csproj" />
+    <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.Logging\StruttonTechnologies.Core.ToolKit.Logging.csproj" />
+    <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.Registration\StruttonTechnologies.Core.ToolKit.Registration.csproj" />
+    <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.Time\StruttonTechnologies.Core.ToolKit.Time.csproj" />
+    <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.Validation\StruttonTechnologies.Core.ToolKit.Validation.csproj" />
   </ItemGroup>
 </Project>

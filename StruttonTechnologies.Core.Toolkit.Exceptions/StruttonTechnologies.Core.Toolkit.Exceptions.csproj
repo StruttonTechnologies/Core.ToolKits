@@ -12,10 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\StruttonTechnologies.Core.ToolKits.Exceptions\StruttonTechnologies.Core.ToolKits.Exceptions.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Using Include="Xunit" />
   </ItemGroup>
 

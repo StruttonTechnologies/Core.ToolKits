@@ -9,21 +9,13 @@
     <File Path="Notes.txt" />
     <File Path="README.md" />
   </Folder>
-  <Folder Name="/Source/">
+  <Folder Name="/src/">
+    <Project Path="StruttonTechnologies.Core.Toolkit.Exceptions/StruttonTechnologies.Core.ToolKit.Exceptions.csproj" />
     <Project Path="StruttonTechnologies.Core.ToolKit.GuardKit/StruttonTechnologies.Core.ToolKit.Guardkit.csproj" />
     <Project Path="StruttonTechnologies.Core.ToolKit.Logging/StruttonTechnologies.Core.ToolKit.Logging.csproj" />
     <Project Path="StruttonTechnologies.Core.ToolKit.Registration/StruttonTechnologies.Core.ToolKit.Registration.csproj" />
+    <Project Path="StruttonTechnologies.Core.ToolKit.Time/StruttonTechnologies.Core.ToolKit.Time.csproj" />
     <Project Path="StruttonTechnologies.Core.ToolKit.Validation/StruttonTechnologies.Core.ToolKit.Validation.csproj" />
-    <Project Path="StruttonTechnologies.Core.ToolKits.Exceptions/StruttonTechnologies.Core.ToolKit.Exceptions.csproj" />
-    <Project Path="StruttonTechnologies.Core.ToolKits.Time/StruttonTechnologies.Core.ToolKits.Time.csproj" />
-  </Folder>
-  <Folder Name="/Source/Testing/">
-    <Project Path="StruttonTechnologies.Core.ToolKit.TestingKit.AspNetCore/StruttonTechnologies.Core.ToolKit.TestingKit.AspNetCore.csproj" />
-    <Project Path="StruttonTechnologies.Core.ToolKit.TestingKit.Assertions/StruttonTechnologies.Core.ToolKit.TestingKit.Assertions.csproj" />
-    <Project Path="StruttonTechnologies.Core.ToolKit.TestingKit.EntityFramework/StruttonTechnologies.Core.ToolKit.TestingKit.EntityFramework.csproj" />
-    <Project Path="StruttonTechnologies.Core.ToolKit.TestingKit.Guard/StruttonTechnologies.Core.ToolKit.TestingKit.Guard.csproj" Id="f1c771a2-46e6-4526-ab56-54f9b3df795f" />
-    <Project Path="StruttonTechnologies.Core.ToolKit.TestingKit.Logging/StruttonTechnologies.Core.ToolKit.TestingKit.Logging.csproj" />
-    <Project Path="StruttonTechnologies.Core.ToolKit.TestingKit/StruttonTechnologies.Core.Toolkit.TestingKit.csproj" Id="d364fb88-ac0b-450d-a9f6-382556fe283b" />
   </Folder>
   <Folder Name="/Tests/">
     <Project Path="StruttonTechnologies.Core.ToolKit.Tests/StruttonTechnologies.Core.ToolKit.Tests.csproj" Id="0d650d60-c21b-46a1-9aa3-4f1091377caa" />
