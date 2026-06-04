@@ -4,6 +4,7 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- Strutton -->
+    <PackageVersion Include="StruttonTechnologies.Core.ToolKit.Composition" Version="1.0.0-alpha" />
     <PackageVersion Include="StruttonTechnologies.Assets.Branding" Version="1.0.0" />
     <!-- Extensions / config / DI / logging -->
     <PackageVersion Include="Microsoft.Extensions.Configuration" Version="10.0.3" />

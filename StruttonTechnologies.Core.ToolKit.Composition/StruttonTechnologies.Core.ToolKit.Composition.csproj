@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageId>StruttonTechnologies.Core.ToolKit.Composition</PackageId>
+    <Title>Strutton Technologies ToolKit Composition</Title>
+    <Description>Single public composition facade for registering Strutton Technologies ToolKit services.</Description>
+    <PackageTags>core;toolkit;strutton;struttontechnologies;composition;dependency-injection</PackageTags>
+
+    <VersionPrefix>1.0.0</VersionPrefix>
+    <VersionSuffix>alpha</VersionSuffix>
+
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.GuardKit\StruttonTechnologies.Core.ToolKit.Guardkit.csproj" />
+    <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.Logging\StruttonTechnologies.Core.ToolKit.Logging.csproj" />
+    <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.Registration\StruttonTechnologies.Core.ToolKit.Registration.csproj" />
+    <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.Time\StruttonTechnologies.Core.ToolKit.Time.csproj" />
+    <ProjectReference Include="..\StruttonTechnologies.Core.ToolKit.Validation\StruttonTechnologies.Core.ToolKit.Validation.csproj" />
+    <ProjectReference Include="..\StruttonTechnologies.Core.Toolkit.Exceptions\StruttonTechnologies.Core.ToolKit.Exceptions.csproj" />
+  </ItemGroup>
+
+</Project>

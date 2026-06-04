@@ -217,13 +217,42 @@ public sealed class ValidationResult
     public Exception? Exception { get; }
     public string? TraceId { get; }
     public ValidationSeverity Severity { get; }
-    
+
     // Factory methods
     public static ValidationResult Success(string? message = null);
     public static ValidationResult Warning(string message, ...);
     public static ValidationResult Failure(string message, ...);
 }
 ```
+
+### ValidationFailure
+
+Represents a single validation failure with rich diagnostic information:
+
+```csharp
+public sealed class ValidationFailure
+{
+    public string Message { get; }
+    public string? Code { get; }
+    public string? Field { get; }
+    public IReadOnlyList<string>? Suggestions { get; }
+    public IReadOnlyDictionary<string, object>? Metadata { get; }
+    public ValidationSeverity Severity { get; }
+
+    // Factory methods
+    public static ValidationFailure Error(string message, ...);
+    public static ValidationFailure Warning(string message, ...);
+    public static ValidationFailure Create(string message, ValidationSeverity severity, ...);
+
+    // Mutation
+    public ValidationFailure With(...);
+}
+```
+
+Use `ValidationFailure` when you need to represent individual validation issues independently from a validation result, enabling scenarios like:
+- Building collections of validation failures
+- Composing complex validation error responses
+- Providing granular failure details in bulk validation operations
 
 ### ValidationSeverity
 
@@ -298,6 +327,35 @@ if (!result.IsValid)
 {
     Console.WriteLine($"{result.Code}: {result.Message}");
 }
+```
+
+#### Using ValidationFailure
+
+```csharp
+// Create individual failures
+var failure = ValidationFailure.Error(
+    message: "Email is required",
+    code: "EmailRequired",
+    field: "Email");
+
+// Create with suggestions
+var failure = ValidationFailure.Error(
+    message: "Invalid email format",
+    code: "InvalidEmail",
+    field: "Email",
+    suggestions: new[] { "Use format: user@example.com" });
+
+// Modify existing failure
+var updated = failure.With(
+    severity: ValidationSeverity.Warning,
+    message: "Email format looks unusual");
+
+// Collect multiple failures
+var failures = new List<ValidationFailure>
+{
+    ValidationFailure.Error("Name is required", field: "Name"),
+    ValidationFailure.Error("Email is required", field: "Email")
+};
 ```
 
 #### Composite validation
