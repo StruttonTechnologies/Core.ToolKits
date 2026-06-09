@@ -1,30 +1,36 @@
 <Solution>
-  <Folder Name="/libraries/" />
-  <Folder Name="/libraries/Exceptions/">
-    <Project Path="StruttonTechnologies.Core.Toolkit.Exceptions/StruttonTechnologies.Core.ToolKit.Exceptions.csproj" />
+  <Folder Name="/Documentation/">
+    <File Path="README.md" />
+    <File Path="docs/README.md" />
   </Folder>
-  <Folder Name="/libraries/Gaurds/">
-    <Project Path="StruttonTechnologies.Core.ToolKit.GuardKit/StruttonTechnologies.Core.ToolKit.Guardkit.csproj" />
+  <Folder Name="/libraries/Composition/">
+    <Project Path="libraries/StruttonTechnologies.Core.ToolKit.Composition/StruttonTechnologies.Core.ToolKit.Composition.csproj" />
+  </Folder>
+  <Folder Name="/libraries/Exceptions/">
+    <Project Path="libraries/StruttonTechnologies.Core.Toolkit.Exceptions/StruttonTechnologies.Core.ToolKit.Exceptions.csproj" />
+  </Folder>
+  <Folder Name="/libraries/GuardKit/">
+    <Project Path="libraries/StruttonTechnologies.Core.ToolKit.GuardKit/StruttonTechnologies.Core.ToolKit.Guardkit.csproj" />
   </Folder>
   <Folder Name="/libraries/Logging/">
-    <Project Path="StruttonTechnologies.Core.ToolKit.Logging/StruttonTechnologies.Core.ToolKit.Logging.csproj" />
+    <Project Path="libraries/StruttonTechnologies.Core.ToolKit.Logging/StruttonTechnologies.Core.ToolKit.Logging.csproj" />
   </Folder>
-  <Folder Name="/libraries/Paginations/">
-    <Project Path="StruttonTechnologies.Core.ToolKit.Pagination.EntityFramework/StruttonTechnologies.Core.ToolKit.Pagination.EntityFramework.csproj" Id="ac421ba0-d93b-4e2e-8fac-f499796065e5" />
-    <Project Path="StruttonTechnologies.Core.ToolKit.Pagination/StruttonTechnologies.Core.ToolKit.Pagination.csproj" Id="8a869276-f186-4427-90ea-1f144cb0984c" />
+  <Folder Name="/libraries/Pagination/">
+    <Project Path="libraries/StruttonTechnologies.Core.ToolKit.Pagination/StruttonTechnologies.Core.ToolKit.Pagination.csproj" />
+    <Project Path="libraries/StruttonTechnologies.Core.ToolKit.Pagination.Dtos/StruttonTechnologies.Core.ToolKit.Pagination.Dtos.csproj" />
+    <Project Path="libraries/StruttonTechnologies.Core.ToolKit.Pagination.EntityFramework/StruttonTechnologies.Core.ToolKit.Pagination.EntityFramework.csproj" />
   </Folder>
   <Folder Name="/libraries/Registration/">
-    <Project Path="StruttonTechnologies.Core.ToolKit.Registration/StruttonTechnologies.Core.ToolKit.Registration.csproj" />
+    <Project Path="libraries/StruttonTechnologies.Core.ToolKit.Registration/StruttonTechnologies.Core.ToolKit.Registration.csproj" />
   </Folder>
   <Folder Name="/libraries/Time/">
-    <Project Path="StruttonTechnologies.Core.ToolKit.Time/StruttonTechnologies.Core.ToolKit.Time.csproj" />
+    <Project Path="libraries/StruttonTechnologies.Core.ToolKit.Time/StruttonTechnologies.Core.ToolKit.Time.csproj" />
   </Folder>
   <Folder Name="/libraries/Validation/">
-    <Project Path="StruttonTechnologies.Core.ToolKit.Validation/StruttonTechnologies.Core.ToolKit.Validation.csproj" />
+    <Project Path="libraries/StruttonTechnologies.Core.ToolKit.Validation/StruttonTechnologies.Core.ToolKit.Validation.csproj" />
   </Folder>
   <Folder Name="/Solution Items/">
     <File Path=".editorconfig" />
-    <File Path="CodeCoverage.runsettings" />
     <File Path="coverage.runsettings" />
     <File Path="Directory.Build.props" />
     <File Path="Directory.Build.targets" />
@@ -32,6 +38,7 @@
     <File Path="Notes.txt" />
   </Folder>
   <Folder Name="/Tests/">
-    <Project Path="StruttonTechnologies.Core.ToolKit.Tests/StruttonTechnologies.Core.ToolKit.Tests.csproj" Id="0d650d60-c21b-46a1-9aa3-4f1091377caa" />
+    <Project Path="tests/StruttonTechnologies.Core.ToolKit.Tests/StruttonTechnologies.Core.ToolKit.Tests.csproj" />
+    <Project Path="tests/StruttonTechnologies.Core.ToolKits.Tests/StruttonTechnologies.Core.ToolKits.Tests.csproj" />
   </Folder>
 </Solution>
