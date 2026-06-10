@@ -1,8 +1,5 @@
 <Solution>
-  <Folder Name="/Documentation/">
-    <File Path="README.md" />
-    <File Path="docs/README.md" />
-  </Folder>
+  <Folder Name="/libraries/" />
   <Folder Name="/libraries/Composition/">
     <Project Path="libraries/StruttonTechnologies.Core.ToolKit.Composition/StruttonTechnologies.Core.ToolKit.Composition.csproj" />
   </Folder>
