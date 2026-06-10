@@ -13,7 +13,7 @@
     <Project Path="libraries/StruttonTechnologies.Core.ToolKit.Logging/StruttonTechnologies.Core.ToolKit.Logging.csproj" />
   </Folder>
   <Folder Name="/libraries/Pagination/">
-    <Project Path="libraries/StruttonTechnologies.Core.ToolKit.Pagination.EntityFramework/StruttonTechnologies.Core.ToolKit.Pagination.EF.csproj" />
+    <Project Path="libraries/StruttonTechnologies.Core.ToolKit.Pagination.EF/StruttonTechnologies.Core.ToolKit.Pagination.EF.csproj" />
     <Project Path="libraries/StruttonTechnologies.Core.ToolKit.Pagination/StruttonTechnologies.Core.ToolKit.Pagination.csproj" />
     <Project Path="libraries/StruttonTechnologies.Core.ToolKit.Pagination.Dtos/StruttonTechnologies.Core.ToolKit.Pagination.Dtos.csproj" />
   </Folder>
