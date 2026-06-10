@@ -1,7 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using StruttonTechnologies.Core.ToolKit.Pagination.EF.Extensions;
 using StruttonTechnologies.Core.ToolKit.Pagination.Models;
 
-namespace StruttonTechnologies.Core.ToolKit.Pagination.EntityFramework.Extensions
+namespace StruttonTechnologies.Core.ToolKit.Pagination.EF.Extensions
 {
     /// <summary>
     /// Provides extension methods for applying Entity Framework tracking behaviors to paginated queries.
