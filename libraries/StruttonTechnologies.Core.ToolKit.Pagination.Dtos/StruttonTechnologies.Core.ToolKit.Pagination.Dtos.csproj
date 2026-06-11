@@ -1,9 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <!-- Package identity -->
+    <PackageId>StruttonTechnologies.Core.ToolKit.Pagination.Dtos</PackageId>
+    <Title>Pagination DTOs for StruttonTechnologies.Core</Title>
+    <Description>Reusable pagination data transfer objects, request models, response models, metadata, and sorting contracts for .NET applications.</Description>
+    <PackageTags>core;strutton;struttontechnologies;pagination;paging;dto;contracts;models</PackageTags>
+
+    <!-- Versioning -->
+    <VersionPrefix>1.0.0</VersionPrefix>
+    <VersionSuffix>alpha</VersionSuffix>
   </PropertyGroup>
 
   <ItemGroup>
