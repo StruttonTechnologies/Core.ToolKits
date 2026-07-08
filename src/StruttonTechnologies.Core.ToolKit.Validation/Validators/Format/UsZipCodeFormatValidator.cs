@@ -1,40 +1,38 @@
-﻿using StruttonTechnologies.Core.ToolKit.Validation.Abstractions;
+using StruttonTechnologies.Core.Rules;
+using StruttonTechnologies.Core.ToolKit.Validation.Abstractions;
 using StruttonTechnologies.Core.ToolKit.Validation.Models;
 
 namespace StruttonTechnologies.Core.ToolKit.Validation.Validators.Format
 {
     /// <summary>
-    /// Validates that an email address matches a practical standard format.
+    /// Validates that a United States ZIP code satisfies the shared ZIP code rules.
     /// </summary>
-    public sealed partial class EmailFormatValidator : IValidator<string>
+    public sealed class UsZipCodeFormatValidator : IValidator<string>
     {
         /// <summary>
-        /// Validates the supplied email address.
+        /// Validates the supplied ZIP code.
         /// </summary>
-        /// <param name="input">The email address to validate.</param>
+        /// <param name="input">The ZIP code to validate.</param>
         /// <returns>A <see cref="ValidationResult"/> describing the outcome.</returns>
         public ValidationResult Validate(string input)
         {
             if (string.IsNullOrWhiteSpace(input))
             {
                 return ValidationResult.Failure(
-                    message: "Email is required.",
+                    message: "ZIP code is required.",
                     code: "Required",
                     field: nameof(input));
             }
 
-            if (!EmailRegex().IsMatch(input))
+            if (!UsZipCodeRules.IsValid(input))
             {
                 return ValidationResult.Failure(
-                    message: "Invalid email format.",
+                    message: "Invalid ZIP code format.",
                     code: "InvalidFormat",
                     field: nameof(input));
             }
 
             return ValidationResult.Success();
         }
-
-        [GeneratedRegex(@"^[^@\s]+@[^@\s]+\.[^@\s]+$")]
-        private static partial Regex EmailRegex();
     }
 }

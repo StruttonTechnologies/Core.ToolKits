@@ -1,4 +1,4 @@
-﻿<Project>
+<Project>
 	<PropertyGroup>
 		
 		<!-- Target framework (can be overridden in .csproj) -->
@@ -20,7 +20,7 @@
 		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
     <!-- Default IsPackable to true (override with false in test projects) -->
 		<IsPackable Condition="'$(IsPackable)' == ''">true</IsPackable>
-		<IsPackable Condition="$(MSBuildProjectName.EndsWith('.Tests'))">false</IsPackable>
+		<IsPackable Condition="$(MSBuildProjectName.EndsWith('Tests'))">false</IsPackable>
 	</PropertyGroup>
   <PropertyGroup Condition="'$(IsTestProject)' == 'true'">
     <CollectCoverage>true</CollectCoverage>

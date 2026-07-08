@@ -6,20 +6,22 @@
     <File Path="Directory.Build.targets" />
     <File Path="Directory.Packages.props" />
   </Folder>
-  <Folder Name="/libraries/">
-    <Project Path="libraries/StruttonTechnologies.Core.ToolKit.Composition/StruttonTechnologies.Core.ToolKit.Composition.csproj" />
-    <Project Path="libraries/StruttonTechnologies.Core.ToolKit.GuardKit/StruttonTechnologies.Core.ToolKit.Guardkit.csproj" />
-    <Project Path="libraries/StruttonTechnologies.Core.ToolKit.Logging/StruttonTechnologies.Core.ToolKit.Logging.csproj" />
-    <Project Path="libraries/StruttonTechnologies.Core.ToolKit.Pagination/StruttonTechnologies.Core.ToolKit.Pagination.csproj" />
-    <Project Path="libraries/StruttonTechnologies.Core.ToolKit.Pagination.Dtos/StruttonTechnologies.Core.ToolKit.Pagination.Dtos.csproj" />
-    <Project Path="libraries/StruttonTechnologies.Core.ToolKit.Pagination.EF/StruttonTechnologies.Core.ToolKit.Pagination.EF.csproj" />
-    <Project Path="libraries/StruttonTechnologies.Core.ToolKit.Registration/StruttonTechnologies.Core.ToolKit.Registration.csproj" />
-    <Project Path="libraries/StruttonTechnologies.Core.ToolKit.Time/StruttonTechnologies.Core.ToolKit.Time.csproj" />
-    <Project Path="libraries/StruttonTechnologies.Core.ToolKit.Validation/StruttonTechnologies.Core.ToolKit.Validation.csproj" />
-    <Project Path="libraries/StruttonTechnologies.Core.Toolkit.Exceptions/StruttonTechnologies.Core.ToolKit.Exceptions.csproj" />
+  <Folder Name="/src/">
+    <Project Path="src/StruttonTechnologies.Core.ToolKit.Composition/StruttonTechnologies.Core.ToolKit.Composition.csproj" />
+    <Project Path="src/StruttonTechnologies.Core.ToolKit.GuardKit/StruttonTechnologies.Core.ToolKit.Guardkit.csproj" />
+    <Project Path="src/StruttonTechnologies.Core.ToolKit.Logging/StruttonTechnologies.Core.ToolKit.Logging.csproj" />
+    <Project Path="src/StruttonTechnologies.Core.ToolKit.Pagination/StruttonTechnologies.Core.ToolKit.Pagination.csproj" />
+    <Project Path="src/StruttonTechnologies.Core.ToolKit.Pagination.Dtos/StruttonTechnologies.Core.ToolKit.Pagination.Dtos.csproj" />
+    <Project Path="src/StruttonTechnologies.Core.ToolKit.Pagination.EF/StruttonTechnologies.Core.ToolKit.Pagination.EF.csproj" />
+    <Project Path="src/StruttonTechnologies.Core.ToolKit.Registration/StruttonTechnologies.Core.ToolKit.Registration.csproj" />
+    <Project Path="src/StruttonTechnologies.Core.ToolKit.Time/StruttonTechnologies.Core.ToolKit.Time.csproj" />
+    <Project Path="src/StruttonTechnologies.Core.ToolKit.Validation/StruttonTechnologies.Core.ToolKit.Validation.csproj" />
+    <Project Path="src/StruttonTechnologies.Core.Toolkit.Exceptions/StruttonTechnologies.Core.ToolKit.Exceptions.csproj" />
   </Folder>
-  <Folder Name="/tests/">
-    <Project Path="tests/StruttonTechnologies.Core.ToolKit.Tests/StruttonTechnologies.Core.ToolKit.Tests.csproj" />
-    <Project Path="tests/StruttonTechnologies.Core.ToolKits.Tests/StruttonTechnologies.Core.ToolKits.Tests.csproj" />
+  <Folder Name="/tests/Unit/">
+    <Project Path="tests/StruttonTechnologies.Core.ToolKits.UnitTests/StruttonTechnologies.Core.ToolKits.UnitTests.csproj" />
+  </Folder>
+  <Folder Name="/tests/Functional/">
+    <Project Path="tests/StruttonTechnologies.Core.ToolKits.FunctionalTests/StruttonTechnologies.Core.ToolKits.FunctionalTests.csproj" />
   </Folder>
 </Solution>

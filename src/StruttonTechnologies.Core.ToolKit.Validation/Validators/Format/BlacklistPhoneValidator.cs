@@ -1,4 +1,5 @@
-﻿using StruttonTechnologies.Core.ToolKit.Validation.Abstractions;
+using StruttonTechnologies.Core.Rules;
+using StruttonTechnologies.Core.ToolKit.Validation.Abstractions;
 using StruttonTechnologies.Core.ToolKit.Validation.Models;
 
 namespace StruttonTechnologies.Core.ToolKit.Validation.Validators.Format
@@ -18,7 +19,12 @@ namespace StruttonTechnologies.Core.ToolKit.Validation.Validators.Format
         public BlacklistPhoneValidator(IEnumerable<string> blacklistedNumbers)
         {
             ArgumentNullException.ThrowIfNull(blacklistedNumbers);
-            this.blacklistedNumbers = new HashSet<string>(blacklistedNumbers, StringComparer.OrdinalIgnoreCase);
+
+            this.blacklistedNumbers = new HashSet<string>(
+                blacklistedNumbers
+                    .Where(PhoneNumberRules.IsValid)
+                    .Select(PhoneNumberRules.Normalize),
+                StringComparer.OrdinalIgnoreCase);
         }
 
         /// <summary>
@@ -36,7 +42,15 @@ namespace StruttonTechnologies.Core.ToolKit.Validation.Validators.Format
                     field: nameof(input));
             }
 
-            if (this.blacklistedNumbers.Contains(input))
+            if (!PhoneNumberRules.IsValid(input))
+            {
+                return ValidationResult.Failure(
+                    message: "Invalid phone number format.",
+                    code: "InvalidFormat",
+                    field: nameof(input));
+            }
+
+            if (this.blacklistedNumbers.Contains(PhoneNumberRules.Normalize(input)))
             {
                 return ValidationResult.Failure(
                     message: "Phone number is not allowed.",

@@ -1,38 +1,38 @@
-﻿using StruttonTechnologies.Core.ToolKit.Validation.Abstractions;
+using StruttonTechnologies.Core.Rules;
+using StruttonTechnologies.Core.ToolKit.Validation.Abstractions;
 using StruttonTechnologies.Core.ToolKit.Validation.Models;
 
 namespace StruttonTechnologies.Core.ToolKit.Validation.Validators.Format
 {
     /// <summary>
-    /// Validates that a United States ZIP code matches either five digits or ZIP+4 format.
+    /// Validates that an email address satisfies the shared email rules.
     /// </summary>
-    public sealed partial class UsZipCodeFormatValidator : IValidator<string>
+    public sealed class EmailFormatValidator : IValidator<string>
     {
         /// <summary>
-        /// Validates the supplied ZIP code.
+        /// Validates the supplied email address.
         /// </summary>
+        /// <param name="input">The email address to validate.</param>
+        /// <returns>A <see cref="ValidationResult"/> describing the outcome.</returns>
         public ValidationResult Validate(string input)
         {
             if (string.IsNullOrWhiteSpace(input))
             {
                 return ValidationResult.Failure(
-                    message: "ZIP code is required.",
+                    message: "Email is required.",
                     code: "Required",
                     field: nameof(input));
             }
 
-            if (!ZipCodeRegex().IsMatch(input))
+            if (!EmailRules.IsValid(input))
             {
                 return ValidationResult.Failure(
-                    message: "Invalid ZIP code format.",
+                    message: "Invalid email format.",
                     code: "InvalidFormat",
                     field: nameof(input));
             }
 
             return ValidationResult.Success();
         }
-
-        [GeneratedRegex(@"^\d{5}(-\d{4})?$")]
-        private static partial Regex ZipCodeRegex();
     }
 }

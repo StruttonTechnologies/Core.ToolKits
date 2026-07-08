@@ -1,4 +1,5 @@
-﻿using StruttonTechnologies.Core.ToolKit.Validation.Abstractions;
+using StruttonTechnologies.Core.Rules;
+using StruttonTechnologies.Core.ToolKit.Validation.Abstractions;
 using StruttonTechnologies.Core.ToolKit.Validation.Models;
 
 namespace StruttonTechnologies.Core.ToolKit.Validation.Validators.Contact
@@ -18,7 +19,12 @@ namespace StruttonTechnologies.Core.ToolKit.Validation.Validators.Contact
         public WhitelistEmailValidator(IEnumerable<string> allowedEmails)
         {
             ArgumentNullException.ThrowIfNull(allowedEmails);
-            this.allowedEmails = new HashSet<string>(allowedEmails, StringComparer.OrdinalIgnoreCase);
+
+            this.allowedEmails = new HashSet<string>(
+                allowedEmails
+                    .Where(EmailRules.IsValid)
+                    .Select(EmailRules.Normalize),
+                StringComparer.OrdinalIgnoreCase);
         }
 
         /// <summary>
@@ -36,7 +42,15 @@ namespace StruttonTechnologies.Core.ToolKit.Validation.Validators.Contact
                     field: nameof(input));
             }
 
-            if (!this.allowedEmails.Contains(input))
+            if (!EmailRules.IsValid(input))
+            {
+                return ValidationResult.Failure(
+                    message: "Invalid email format.",
+                    code: "InvalidFormat",
+                    field: nameof(input));
+            }
+
+            if (!this.allowedEmails.Contains(EmailRules.Normalize(input)))
             {
                 return ValidationResult.Failure(
                     message: "Email is not authorized.",

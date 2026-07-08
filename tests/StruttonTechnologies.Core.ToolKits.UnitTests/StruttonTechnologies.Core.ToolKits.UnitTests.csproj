@@ -1,6 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
     <IsTestProject>true</IsTestProject>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
@@ -12,19 +14,25 @@
     </PackageReference>
     <PackageReference Include="Microsoft.NET.Test.Sdk" />
     <PackageReference Include="xunit.v3" />
-    <PackageReference Include="xunit.runner.visualstudio" />
+    <PackageReference Include="xunit.runner.visualstudio">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
-  
+
   <ItemGroup>
-    <Folder Include="Guard\GuardCondition\Behaviors\ValidationBehaviors\" />
-  </ItemGroup>
-  
-  <ItemGroup>
+    <ProjectReference Include="..\..\src\StruttonTechnologies.Core.ToolKit.Composition\StruttonTechnologies.Core.ToolKit.Composition.csproj" />
     <ProjectReference Include="..\..\src\StruttonTechnologies.Core.Toolkit.Exceptions\StruttonTechnologies.Core.ToolKit.Exceptions.csproj" />
     <ProjectReference Include="..\..\src\StruttonTechnologies.Core.ToolKit.GuardKit\StruttonTechnologies.Core.ToolKit.Guardkit.csproj" />
     <ProjectReference Include="..\..\src\StruttonTechnologies.Core.ToolKit.Logging\StruttonTechnologies.Core.ToolKit.Logging.csproj" />
+    <ProjectReference Include="..\..\src\StruttonTechnologies.Core.ToolKit.Pagination\StruttonTechnologies.Core.ToolKit.Pagination.csproj" />
+    <ProjectReference Include="..\..\src\StruttonTechnologies.Core.ToolKit.Pagination.EF\StruttonTechnologies.Core.ToolKit.Pagination.EF.csproj" />
     <ProjectReference Include="..\..\src\StruttonTechnologies.Core.ToolKit.Registration\StruttonTechnologies.Core.ToolKit.Registration.csproj" />
     <ProjectReference Include="..\..\src\StruttonTechnologies.Core.ToolKit.Time\StruttonTechnologies.Core.ToolKit.Time.csproj" />
     <ProjectReference Include="..\..\src\StruttonTechnologies.Core.ToolKit.Validation\StruttonTechnologies.Core.ToolKit.Validation.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
   </ItemGroup>
 </Project>

@@ -1,12 +1,13 @@
-﻿using StruttonTechnologies.Core.ToolKit.Validation.Abstractions;
+using StruttonTechnologies.Core.Rules;
+using StruttonTechnologies.Core.ToolKit.Validation.Abstractions;
 using StruttonTechnologies.Core.ToolKit.Validation.Models;
 
 namespace StruttonTechnologies.Core.ToolKit.Validation.Validators.Format
 {
     /// <summary>
-    /// Validates that a phone number matches a practical E.164-style format.
+    /// Validates that a phone number satisfies the shared phone number rules.
     /// </summary>
-    public sealed partial class PhoneNumberFormatValidator : IValidator<string>
+    public sealed class PhoneNumberFormatValidator : IValidator<string>
     {
         /// <summary>
         /// Validates the supplied phone number.
@@ -23,18 +24,15 @@ namespace StruttonTechnologies.Core.ToolKit.Validation.Validators.Format
                     field: nameof(input));
             }
 
-            if (!PhoneRegex().IsMatch(input))
+            if (!PhoneNumberRules.IsValid(input))
             {
                 return ValidationResult.Failure(
-                    message: "Phone number must be in valid international format (E.164).",
+                    message: "Invalid phone number format.",
                     code: "InvalidFormat",
                     field: nameof(input));
             }
 
             return ValidationResult.Success();
         }
-
-        [GeneratedRegex(@"^\+?[1-9]\d{9,14}$")]
-        private static partial Regex PhoneRegex();
     }
 }
