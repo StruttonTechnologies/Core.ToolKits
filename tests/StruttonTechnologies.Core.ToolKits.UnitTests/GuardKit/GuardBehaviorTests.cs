@@ -37,9 +37,9 @@ public sealed class GuardBehaviorTests
     }
 
     [Fact]
-    public void ReturnEmptyList_ReturnsEmptyWhenMatched()
+    public async Task ReturnEmptyList_ReturnsEmptyWhenMatched()
     {
-        var value = Guard.IsTrue(true).ReturnEmptyList(_ => new List<int> { 1 });
+        var value = await Guard.IsTrue(true).ReturnEmptyList<int>(_ => Task.FromResult(new List<int> { 1 }));
 
         Assert.Empty(value);
     }

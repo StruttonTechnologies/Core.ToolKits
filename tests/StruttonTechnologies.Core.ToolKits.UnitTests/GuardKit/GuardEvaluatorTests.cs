@@ -88,7 +88,7 @@ public sealed class GuardEvaluatorTests
     {
         object value = "abc";
 
-        var result = Guard.IsType<object, string>(value).Return(true, _ => false);
+        var result = Guard.IsType<string>(value).Return(true, _ => false);
 
         Assert.True(result);
     }

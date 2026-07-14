@@ -1,3 +1,4 @@
+using StruttonTechnologies.Core.ToolKit.Time.Abstractions;
 using StruttonTechnologies.Core.ToolKit.Time.Clocks;
 using StruttonTechnologies.Core.ToolKit.Time.Extensions;
 using StruttonTechnologies.Core.ToolKit.Time.Models;
@@ -16,7 +17,7 @@ public sealed class TimeToolkitTests
         clock.Advance(TimeSpan.FromHours(2));
 
         Assert.Equal(start.AddHours(2), clock.UtcNow);
-        Assert.Equal(TimeSpan.Zero, clock.UtcNowOffset.Offset);
+        Assert.Equal(TimeSpan.Zero, ((IClock)clock).UtcNowOffset.Offset);
     }
 
     [Fact]

@@ -1,9 +1,11 @@
-﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 using StruttonTechnologies.Core.ToolKit.GuardKit.DependencyInjection;
 using StruttonTechnologies.Core.ToolKit.Logging.Services;
 using StruttonTechnologies.Core.ToolKit.Registration.DependencyInjection;
+using StruttonTechnologies.Core.ToolKit.Time.DependencyInjection;
+using StruttonTechnologies.Core.ToolKit.Validation.DependencyInjection;
 
 namespace StruttonTechnologies.Core.ToolKit.Composition;
 
@@ -22,6 +24,8 @@ public static class ToolKitCompositionExtensions
         services.AddGuardKit();
         services.AddToolkitLogging();
         services.AddRegistration();
+        services.AddTimeToolkit();
+        services.AddValidation();
 
         return services;
     }

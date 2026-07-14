@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<!-- Package identity -->
 	<PropertyGroup>
@@ -14,5 +14,10 @@
 		<!-- Packaging -->
 		<IsPackable>true</IsPackable>
 	</PropertyGroup>
+
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+	</ItemGroup>
 
 </Project>

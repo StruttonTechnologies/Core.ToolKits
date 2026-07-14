@@ -27,14 +27,19 @@ public sealed class LoggingTests
     }
 
     [Fact]
-    public void LogMessageBuilder_AppendsPartsWithSeparator()
+    public void LogMessageBuilder_CreatesMissingConfigurationMessage()
     {
-        var message = new LogMessageBuilder()
-            .Append("One")
-            .Append("Two")
-            .ToString();
+        var message = LogMessageBuilder.MissingConfiguration("ConnectionStrings:Default");
 
-        Assert.Equal("One | Two", message);
+        Assert.Equal("Missing configuration value: 'ConnectionStrings:Default'.", message);
+    }
+
+    [Fact]
+    public void LogMessageBuilder_CreatesConfigurationFoundMessage()
+    {
+        var message = LogMessageBuilder.ConfigurationFound("ConnectionStrings:Default");
+
+        Assert.Equal("Configuration check passed: 'ConnectionStrings:Default' found.", message);
     }
 
     [Fact]

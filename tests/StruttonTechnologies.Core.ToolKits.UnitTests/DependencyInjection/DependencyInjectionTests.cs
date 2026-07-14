@@ -3,6 +3,9 @@ using Microsoft.Extensions.DependencyInjection;
 using StruttonTechnologies.Core.ToolKit.Composition;
 using StruttonTechnologies.Core.ToolKit.GuardKit.DependencyInjection;
 using StruttonTechnologies.Core.ToolKit.Logging.Services;
+using StruttonTechnologies.Core.ToolKit.Time.Utilities;
+using StruttonTechnologies.Core.ToolKit.Time.DependencyInjection;
+using StruttonTechnologies.Core.ToolKit.Time.Abstractions;
 using StruttonTechnologies.Core.ToolKit.Validation.DependencyInjection;
 using StruttonTechnologies.Core.ToolKit.Validation.Validators.Format;
 
@@ -44,6 +47,21 @@ public sealed class DependencyInjectionTests
         Assert.NotNull(provider.GetService<ICorrelationIdAccessor>());
     }
 
+
+    [Fact]
+    public void AddTimeToolkit_RegistersExpectedTimeServices()
+    {
+        var services = new ServiceCollection();
+
+        services.AddTimeToolkit();
+        using var provider = services.BuildServiceProvider();
+
+        Assert.NotNull(provider.GetService<IClock>());
+        Assert.NotNull(provider.GetService<BusinessDayCalculator>());
+        Assert.NotNull(provider.GetService<ScheduledTaskTracker>());
+        Assert.NotNull(provider.GetService<TimeStateTracker>());
+    }
+
     [Fact]
     public void AddStruttonTechnologiesToolKit_RegistersToolkitServices()
     {
@@ -55,5 +73,6 @@ public sealed class DependencyInjectionTests
 
         Assert.NotNull(provider.GetService<ICorrelationIdAccessor>());
         Assert.NotNull(provider.GetService<EmailFormatValidator>());
+        Assert.NotNull(provider.GetService<IClock>());
     }
 }

@@ -18,22 +18,24 @@ public sealed class RegistrationTests
     }
 
     [Fact]
-    public void ServiceCompositionOptions_DefaultsToTryAddBehavior()
+    public void ServiceCompositionOptions_DefaultsToAppendBehavior()
     {
         var options = new ServiceCompositionOptions();
 
-        Assert.Equal(ServiceCompositionBehavior.TryAdd, options.Behavior);
+        Assert.Equal(ServiceCompositionBehavior.Append, options.Behavior);
     }
 
     [Fact]
-    public void ServiceCollectionComposer_AddsServiceDescriptor()
+    public void ServiceCollectionComposer_AppendsServiceDescriptor()
     {
-        var services = new ServiceCollection();
-        var composer = new ServiceCollectionComposer(services);
+        var target = new ServiceCollection();
+        var source = new ServiceCollection();
 
-        composer.AddSingleton<ITestService, TestService>();
+        source.AddSingleton<ITestService, TestService>();
 
-        Assert.Contains(services, d => d.ServiceType == typeof(ITestService) && d.ImplementationType == typeof(TestService));
+        ServiceCollectionComposer.Compose(target, source);
+
+        Assert.Contains(target, d => d.ServiceType == typeof(ITestService) && d.ImplementationType == typeof(TestService));
     }
 
     private interface ITestService;

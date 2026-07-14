@@ -20,8 +20,8 @@ Core.ToolKits
 │   └── StruttonTechnologies.Core.Toolkit.Exceptions
 │
 └── tests
-    ├── StruttonTechnologies.Core.ToolKit.Tests
-    └── StruttonTechnologies.Core.ToolKits.Tests
+    ├── StruttonTechnologies.Core.ToolKits.UnitTests
+    └── StruttonTechnologies.Core.ToolKits.FunctionalTests
 ```
 
 Production packages live under `src`. Automated tests live under `tests`.
@@ -30,12 +30,35 @@ Production packages live under `src`. Automated tests live under `tests`.
 
 Toolkits provide reusable implementation support for higher-level Core capabilities and applications. Each package should remain focused, independently consumable, and dependency-conscious.
 
+Toolkits are not application features. They provide reusable capabilities such as validation, guard clauses, logging helpers, time abstractions, pagination helpers, registration utilities, and shared exception types.
+
+## Composition
+
+`StruttonTechnologies.Core.ToolKit.Composition` provides the public composition facade for registering toolkit services.
+
+Consumers that want the standard toolkit registration set should call:
+
+```csharp
+services.AddStruttonTechnologiesToolKit(configuration);
+```
+
+The composition facade registers runtime services from the toolkit packages that expose them and calls no-op registration hooks for toolkit packages that intentionally have no runtime services today.
+
+See `REGISTRATION_AUDIT.md` for the current package-by-package registration status.
+
 ## Rules and Validation
 
-Universal concept rules belong in `StruttonTechnologies.Core.Rules` in the Foundation solution. Validation toolkit validators may depend on those rules to report failures consistently without duplicating rule logic.
+Universal concept rules belong in `StruttonTechnologies.Core.Rules` in the Foundation solution.
 
+Validation toolkit validators may depend on those rules to report failures consistently without duplicating rule logic.
 
----
+```text
+Rules
+    = what is universally true about a concept
+
+Validation
+    = how validation failures are reported
+```
 
 ## Testing Structure
 
@@ -62,4 +85,10 @@ Functional tests cover cross-package behavior, such as the composition facade re
 
 ### Coverage Guidance
 
-Projects that contain behavior should have unit coverage. Projects that contain only constants, marker types, records without behavior, or empty placeholder classes do not require dedicated tests until behavior is introduced.
+Projects that contain behavior should have unit coverage. Projects that contain only constants, marker types, records without behavior, DTOs, exceptions without custom behavior, or static extension-only helpers do not require dedicated tests until behavior is introduced.
+
+## Build Notes
+
+This solution uses Central Package Management through `Directory.Packages.props`.
+
+Package references should not include versions in individual project files unless there is a deliberate exception.
